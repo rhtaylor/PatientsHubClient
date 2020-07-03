@@ -1,7 +1,7 @@
 import React, {Component} from 'react'; 
 import logo from './logo.svg';
 import './App.css';
-
+import Provider from './components/Provider'
 class App extends Component{  
   componentDidMount(){
     fetch('http://localhost:3000/patients') 
@@ -18,14 +18,9 @@ class App extends Component{
         <p>  
           Edit <code>src/App.js</code> and save to reload.
         </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        
+         
+       <Provider />
       </header>
     </div>
   );
