@@ -1,0 +1,9 @@
+a:active{ 
+    color: white
+} 
+a:visited{
+    color: rgb(96, 194, 207);
+} 
+a{
+    color: greenyellow
+}

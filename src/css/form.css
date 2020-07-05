@@ -1,0 +1,7 @@
+.form{ 
+    background: black;
+   flex-direction: column;
+   align-items: left;
+  justify-content: left;
+} 
+
