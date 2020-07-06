@@ -3,11 +3,11 @@ export function addProvider(action){
     return (dispatch) => { 
         dispatch({type: "ADDING_PROVIDERS", provider: 'UPLOADING'});  
          debugger
-        return fetch('http://localhost:3000/providers/create.json', {
+        return fetch('http://localhost:3000/api/v1/providers/create', {
             method: "POST", headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify(action)
+            }, body: JSON.stringify( action )
         }).then(res => res.json()).then(data => dispatch({ type: 'ADDED_PROVIDER', provider: data})) 
             .catch(err => alert(err.response.data.message))
 

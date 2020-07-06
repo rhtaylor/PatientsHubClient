@@ -52,8 +52,14 @@ class Form extends Component{
             <br /> 
             <label>Password Confirmation</label>
                 <input type="password" id="password_confirmation" value={this.state.password_confirmation} onChange={this.handleChange}/>
-            <br/>
-            <input type="submit" value="Sign up" /*onClick={this.handleSubmit(this.state)}*/ />
+            <br/> 
+                <label>Avatar </label>
+                <input type="file"
+                    id="avatar" name="avatar"
+                    accept="image/png, image/jpeg" /> 
+                    <br/>
+            <input type="submit" value="Sign up" /*onClick={this.handleSubmit(this.state)}*/ /> 
+            
         </form>
         </div>
     ) 
