@@ -6,7 +6,9 @@ import * as serviceWorker from './serviceWorker';
 import { createStore, applyMiddleware } from 'redux';  
 import thunk from 'redux-thunk';
 import { Provider } from 'react-redux';  
-import manageProviders from './reducers/manageProviders'; 
+import manageProviders from './reducers/manageProviders';
+import manageCharts from './reducers/manageCharts'  
+import { combineReducers } from "redux";
 import {
   BrowserRouter as Router,
   Route
@@ -21,7 +23,15 @@ function addMiddle(){
   
 } 
 
-const store = createStore(manageProviders, applyMiddleware(thunk))
+
+
+
+
+const rootReducer = combineReducers({
+  charts: manageCharts,
+  providers: manageProviders
+}); 
+const store = createStore(rootReducer, applyMiddleware(thunk))
 
 ReactDOM.render(
   <Provider store={store}>

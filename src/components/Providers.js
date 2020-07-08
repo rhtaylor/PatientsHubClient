@@ -23,10 +23,13 @@ class Providers extends Component{
         if (this.props.providers === "LOADING") {
             return (<h1>{this.props.providers}</h1>)
         } else { return this.props.providers.map((p,i) =>{ 
-        return (<div> 
-            <Link style={{ marginRight: '10px' }} key={p.id} to={`/providers/${p.id}`}><h1>{p.name}</h1></Link>
-        
-            <Route path={`${this.props.match.url}/:${p.id}`} component={<Provider  />} key={p.id + p.id} /></div>  )} ) }
+        return (<div key={i}>  
+            <Provider provider={p} key={ p.id + i }/> 
+            {/*below was for nested routes, maybe impliment when more time*/}
+            {/* <Link style={{ marginRight: '10px' }} key={p.id} to={`/providers/${p.id}`}><h1>{p.name}</h1></Link>
+            <Route path={`${this.props.match.url}/:${p.id}`} render={(props) => <Provider {...props} provider={p} key={p.id + p.id}/>} />  */}
+                </div>
+            )} ) }
 
 
     }

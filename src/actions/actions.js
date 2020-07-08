@@ -48,6 +48,14 @@ export function getProviders(){
     }
 }
 
+export function getCharts(){
+    return (dispatch) =>{
+        dispatch({type: "ADDING_CHARTS", charts: "LOADING"}); 
+        return fetch('http://localhost:3000/charts') 
+        .then(res => res.json()) 
+        .then(data => dispatch({type: 'ADDED_CHARTS', charts: data}))
+    }
+}
 // export function fetchAstronauts() {
 //     return (dispatch) => {
 //         dispatch({ type: 'START_ADDING_ASTRONAUTS_REQUEST' });
