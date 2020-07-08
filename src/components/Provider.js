@@ -6,8 +6,8 @@ export default class Provider extends Component{
     }
     render(){ 
         debugger 
-        return (<div className="vc">
-            <h1>{this.props.provider.name}</h1>
+        return (<div className="vc"> 
+            <h1>YO{this.props.provider.name}</h1>
             <h2>{this.props.provider.email}</h2>
             <h2>{this.props.provider.job}</h2>
         </div>)

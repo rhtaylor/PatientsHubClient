@@ -1,9 +1,18 @@
 a:active{ 
-    color: white
+    color: rgb(255, 0, 0)
 } 
 a:visited{
-    color: rgb(96, 194, 207);
+    color: rgb(51, 49, 49);
 } 
 a{
-    color: greenyellow
+    color: rgb(2, 3, 0)
+}  
+.bar a:hover {
+  color: lightgreen;
+}
+.bar{  
+justify-content: center; 
+border-bottom: black;
+width: max-content; 
+height: auto;
 }

@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import fetchObj from './fetchObj'
 import '../css/form.css';  
 import thunk from 'redux-thunk';
-
+import ActiveStorageProvider from 'react-activestorage-provider' 
+import {PostForm} from './Upload';
 import { connect } from 'react-redux';
  
 import {addProvider, addingProvider} from '../actions/actions'
@@ -13,9 +14,21 @@ class Form extends Component{
         job: '',
         email: '', 
         password: '', 
-        password_confirmation: ''
+        password_confirmation: '', 
+        
     } 
+    //for adding avatar pic 
 
+    // selected =(e)=>{
+    //      e.persist() && e.preventDefault()
+    //      const savedE = e
+    //     debugger
+    //     this.setState(prestate =>{
+    //         return {...prestate, avatar: savedE.target.value}
+    //     }) 
+    //     console.log(this.state) 
+    //     debugger
+    // }
     handleChange =(event)=>{ 
           
         let {id, value } = event.target 
@@ -53,11 +66,12 @@ class Form extends Component{
             <label>Password Confirmation</label>
                 <input type="password" id="password_confirmation" value={this.state.password_confirmation} onChange={this.handleChange}/>
             <br/> 
-                <label>Avatar </label>
+                {/* <label>Avatar </label> 
+                // file upload for avatar pics
                 <input type="file"
                     id="avatar" name="avatar"
-                    accept="image/png, image/jpeg" /> 
-                    <br/>
+                    accept="image/png, image/jpeg" onChange={(e)=>this.selected(e)}/> 
+                    <br/> */}
             <input type="submit" value="Sign up" /*onClick={this.handleSubmit(this.state)}*/ /> 
             
         </form>

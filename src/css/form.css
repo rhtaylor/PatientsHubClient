@@ -1,5 +1,6 @@
 .form{ 
-    background: black;
+    background: black; 
+    text-decoration-color: white;
    flex-direction: column;
    align-items: left;
   justify-content: left;

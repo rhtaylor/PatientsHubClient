@@ -1,17 +1,32 @@
-.App {
+.App {  
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.h1{
+  color: white; 
+  text-decoration-color: white;
 }
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
+} 
+.patientshubimg h1{ 
+  justify-content: center;
+  color: black;
 }
+.patientshubimg{ 
+  display: flex;
+  background-image: url('./css/pt.jpg');  } 
+
+.patientshub{
+display: flex;
+}
+  
+
 
 .App-header {
   background-color: #282c34;
