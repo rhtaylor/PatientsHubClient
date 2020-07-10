@@ -7,10 +7,16 @@ export default function manageCharts(state = {
     switch (type) {
         case "ADDING_CHARTS":
             return { ...state, charts: action.charts };
-        case 'ADDED_CHARTS':
-            return { ...state, charts: [...state.charts.concat(action.chart)] };
+        case 'GOT_CHARTS':
+            return { ...state, charts: action.charts };
         case 'FETCHING_CHARTS':
-            return { ...state, charts: action.charts }
+            return { ...state, charts: action.charts } 
+        case 'FULL_RECORDS': 
+        return {...state, charts: [action.charts] }
+        case 'GOT_RECORDS':  
+        let newCharts = action.charts.map(c => c.chart)
+        return { ...state,  charts: [...newCharts] }
+        
         default:
             return state;
     }

@@ -20,7 +20,7 @@ class App extends Component{
   
   componentDidMount(){ 
     debugger
-    fetch('http://localhost:3000/patients') 
+    fetch('http://localhost:3000/api/v1/patients') 
     .then(res => res.json()) 
     .then(data => console.log(data)) 
     .catch(err =>console.log(err))

@@ -8,9 +8,7 @@ import {
     Route
 } from 'react-router-dom';
 class Providers extends Component{
-    constructor(props){
-        super(props)
-    } 
+    
     // const renderMovies = Object.keys(movies).map(movieID =>
     //     <Link key={movieID} to={`/movies/${movieID}`}>{movies[movieID].title}</Link>
     // );

@@ -6,14 +6,14 @@ import { Link } from 'react-router-dom';
  class Patients extends Component{
     componentDidMount(){
         this.props.getPatients(); 
-
+        debugger
     }  
     
     makePatients = () =>{  
         debugger
         if (this.props.patients === "LOADING") {
             return (<h1>{this.props.patients}</h1>)
-        } else { return this.props.patients.map((p, i) => <Patient key={i} patient={p} />) }
+        } else if (this.props.patients.length > 0 ) { return this.props.patients.map((p, i) => <Patient key={i} patient={p} />) }
   }
     render(){
     return (
@@ -22,8 +22,9 @@ import { Link } from 'react-router-dom';
     }
 
 } 
-const mstp = (s) =>{
-    return {patients: s.patients}
+const mstp = (s) =>{ 
+    debugger
+    return {patients: s.providers.patients}
 }
 const mdtp = (dispatch) =>{ 
     return{getPatients: ()=> dispatch(getPatients())}
