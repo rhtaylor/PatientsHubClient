@@ -1,0 +1,9 @@
+.chartfront{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly ; 
+  background-image: url('../css/office.jpg'); 
+   
+  background-size: 168px 300px; 
+  
+}

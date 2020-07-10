@@ -36,7 +36,7 @@ class App extends Component{
             <NavBar /> 
             <Route exact path="/About" render={()=> <About />} />
             <Route exact path="/SignUp" render={() => <Form />} />
-            <Route exact path="/charts" render={() => <Charts />} /> 
+            <Route exact path="/charts" render={(routerProps) => <Charts {...routerProps} />} /> 
             <Route exact path="/patients" render={()=><Patients />} />  
             <Route exact path="/providers" render={(routerProps) =><Providers {...routerProps} providers={this.props.providers} getProviders={this.props.getProviders}/>} />
           </div> 
