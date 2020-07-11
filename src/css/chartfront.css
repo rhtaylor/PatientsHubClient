@@ -1,9 +1,8 @@
-.chartfront .card{
-  display: flex;
-  align-items: center;
+#cardfront{
+  
   justify-content: space-evenly ;
   justify-content: center; 
-  background-image: url('../css/office.jpg'); 
+  background-image: url('../css/cardFrontPaper.jpg'); 
    
   background-size: 168px 300px; 
   
