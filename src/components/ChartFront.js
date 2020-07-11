@@ -5,19 +5,16 @@ import '../css/cardFrontPaper.jpg'
 
 
 export const ChartFront = ({date, note, rest, providers, provider_id, patient_id, patients}) => { 
-    debugger
+    
     let thisChartProvider  =  providers.filter(p =>  p.id === provider_id )    
     debugger
     return(  
         <div className="jumbotron"  >
         <div  id="cardfront" >
-            <span><h3>{date}</h3></span> 
+            <span>{date}</span> 
             < hr/>   
-            <br />
-            <br/>< hr/><h3>{thisChartProvider[0].name}</h3>
-            <br/> 
-            <br />
-            <span><h3>{note}</h3></span>
+            < hr/><h3 className="card-title">{thisChartProvider[0].name } :</h3>
+            <span><h3 className="card-text">{note}</h3></span>
         </div>  
         </div>
     )

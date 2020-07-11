@@ -6,7 +6,8 @@ import Provider from './components/Provider'
 import Charts from './components/Charts'
 import Providers from './components/Providers'  
 //import Providers from './components/PsudoProviders' 
-import Patients from './components/Patients' 
+import Patients from './components/Patients'  
+import SignIn from './forms/SignIn'
 import { getProviders} from './actions/actions'
 import Form from './components/Form'  
 import { connect } from 'react-redux';
@@ -35,7 +36,8 @@ class App extends Component{
           <div> 
             <NavBar /> 
             <Route exact path="/About" render={()=> <About />} />
-            <Route exact path="/SignUp" render={() => <Form />} />
+            <Route exact path="/SignUp" render={() => <Form />} /> 
+            <Route exact path="/SignIn" render={() => <SignIn />} />
             <Route exact path="/charts" render={(routerProps) => <Charts {...routerProps} />} /> 
             <Route exact path="/patients" render={()=><Patients />} />  
             <Route exact path="/providers" render={(routerProps) =><Providers {...routerProps} providers={this.props.providers} getProviders={this.props.getProviders}/>} />
