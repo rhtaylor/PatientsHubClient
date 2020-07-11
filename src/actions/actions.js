@@ -1,10 +1,10 @@
 import SignIn from "../forms/SignIn";
 
 export function addProvider(action){   
-    debugger
+    
     return (dispatch) => { 
         dispatch({type: "ADDING_PROVIDERS", provider: 'UPLOADING'});  
-         debugger
+         
         return fetch('http://localhost:3000/api/v1/providers/create', {
             method: "POST", headers: {
                 'Accept': 'application/json',
@@ -23,7 +23,7 @@ export function addingProvider(type, data){
     case "ADDING_PROVIDER":
     return {type: "ADDING_PROVIDER", provider: "PENDING"} 
     case "ADDED_PROVIDER":  
-    debugger
+    
     return {type: "ADDED_PROVIDER", provider: data} 
     default: 
     return {type: 'NO TYPE'} 
@@ -73,20 +73,18 @@ export function getRecords(){
 
 export function signIn(payload){ 
     return (dispatch) =>{ 
-        debugger
+        
         dispatch({type: 'SIGN_IN', provider: "LOADING"}); 
         return fetch('http://localhost:3000/api/v1/providers/login', {
-            method: "POST", headers: {
+            method: "POST",  
+            mode: 'cors',
+            headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }, body: JSON.stringify(payload)
     })
-    .then(res =>{ debugger
-        return res.json() }) 
-    .then(data => { debugger 
-        // This is throwing errors, Once functional will add 
-        // a logged_in: true flag to the Provider object
-      return  dispatch({type: 'SIGNED_IN', provider: data}) })
+    .then( res =>  res.json()  ) 
+    .then(data => dispatch({type: 'SIGNED_IN', provider: data }) )
     .catch(err => alert(err.response.data.message))
     }
 

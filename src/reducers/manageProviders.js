@@ -1,10 +1,10 @@
 export default function manageProviders(state = {
     providers: [], 
     patients: [], 
-    
+    signed_id: []
 }, action) {
     let {type} = action
-        debugger
+        
     switch(type){
         case "ADDING_PROVIDER":
         return {...state, providers: action.provider};  
@@ -26,11 +26,13 @@ export default function manageProviders(state = {
               let newPatients = action.charts.map(chart => chart.patient)
         return {...state, providers: [...newProviders], patients: [...newPatients] }; 
         case 'SIGN_IN':  
-        debugger
+        
         return {...state, providers: action.provider}; 
         case 'SIGNED_IN':   
-        debugger
-        return {...state, providers: action.provider }
+         
+        action.provider.signed_in = true 
+        
+        return {...state, signed_id: [action.provider] }
         default: 
         return state;
     }
