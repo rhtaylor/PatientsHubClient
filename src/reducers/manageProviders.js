@@ -1,7 +1,7 @@
 export default function manageProviders(state = {
     providers: [], 
     patients: [], 
-    signed_id: []
+    signed_in: []
 }, action) {
     let {type} = action
         

@@ -6,6 +6,8 @@ import './css/app.css'
 import Provider from './components/Provider' 
 import Charts from './components/Charts'
 import Providers from './components/Providers'  
+import {SignedIn} from './components/stateless/SignedIn' 
+
 //import Providers from './components/PsudoProviders' 
 import Patients from './components/Patients'  
 import SignIn from './forms/SignIn'
@@ -37,7 +39,7 @@ class App extends Component{
         {this.props.providers === "LOADING" ? <h4 className='dark'>{this.props.providers}</h4> : null }
         <Router > 
           <div> 
-            <NavBar /> 
+            <NavBar signedIn={false} /> 
             <Route exact path="/About" render={()=> <About />} />
             <Route exact path="/SignUp" render={() => <Form />} /> 
             <Route exact path="/SignIn" render={() => <SignIn signIn={(arg) => this.props.signIn(arg)}/>} />
@@ -46,10 +48,9 @@ class App extends Component{
             <Route exact path="/providers" render={(routerProps) =><Providers {...routerProps} providers={this.props.providers} getProviders={this.props.getProviders}/>} />
           </div> 
           </Router>
-        {/* <Route path='/movies' render={routerProps => <MoviesPage {...routerProps} movies={this.state.movies} />} /> */}
-        debugger
-        <footer>Im a footer!</footer>
-      </header> 
+        
+        <footer>{this.props.signed_in.length > 0 ? this.props.signed_in.map(pro => <SignedIn prop={pro} />) : <Router ><NavBar signedIn={false} /></Router> }</footer>
+      </header>  
       
     </div>
   );
@@ -58,7 +59,10 @@ class App extends Component{
 
 const mstp =(state)=>{
   return{ 
-    providers: state.providers}
+    providers: state.providers, 
+    signed_in: state.providers.signed_in 
+              
+  }
 }  
 const mdtp = (dispatch) =>{ 
 return{ getProviders: () => dispatch(getProviders()), 

@@ -38,6 +38,23 @@ display: flex;
 
 .App-link {
   color: #61dafb;
+} 
+ 
+.warn.hide-opacity{
+    opacity: 0;
+} 
+
+.warn { 
+    
+    color: #e49c9c;
+    text-align: center;
+    background-color: rgb(235, 220, 220); 
+     transition: all 3s;
+    -webkit-transition: opacity 3s ease-in-out;
+    -moz-transition: opacity 3s ease-in-out;
+    -ms-transition: opacity 3s ease-in-out;
+    -o-transition: opacity 3s ease-in-out;
+     opacity: 1;
 }
 
 
