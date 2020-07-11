@@ -1,6 +1,7 @@
 export default function manageProviders(state = {
     providers: [], 
-    patients: []
+    patients: [], 
+    
 }, action) {
     let {type} = action
         debugger
@@ -27,7 +28,7 @@ export default function manageProviders(state = {
         case 'SIGN_IN':  
         debugger
         return {...state, providers: action.provider}; 
-        case 'SIGNED_IN':  
+        case 'SIGNED_IN':   
         debugger
         return {...state, providers: action.provider }
         default: 

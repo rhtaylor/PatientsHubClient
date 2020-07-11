@@ -47,6 +47,7 @@ class App extends Component{
           </div> 
           </Router>
         {/* <Route path='/movies' render={routerProps => <MoviesPage {...routerProps} movies={this.state.movies} />} /> */}
+        debugger
         <footer>Im a footer!</footer>
       </header> 
       

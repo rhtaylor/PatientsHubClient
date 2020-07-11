@@ -81,9 +81,11 @@ export function signIn(payload){
                 'Content-Type': 'application/json'
             }, body: JSON.stringify(payload)
     })
-    .then(res => res.json()) 
-    .then(data => dispatch({type: 'SIGNED_IN', provider: payload})) 
-            .catch(err => alert(err.response.data.message))
+    .then(res =>{ debugger
+        return res.json() }) 
+    .then(data => { debugger
+      return  dispatch({type: 'SIGNED_IN', provider: data}) })
+    .catch(err => alert(err.response.data.message))
     }
 
 }
