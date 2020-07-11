@@ -72,7 +72,8 @@ export function getRecords(){
 } 
 
 export function signIn(payload){ 
-    return (dispatch) =>{
+    return (dispatch) =>{ 
+        debugger
         dispatch({type: 'SIGN_IN', provider: "LOADING"}); 
         return fetch('http://localhost:3000/api/v1/providers/login', {
             method: "POST", headers: {
@@ -82,7 +83,7 @@ export function signIn(payload){
     })
     .then(res => res.json()) 
     .then(data => dispatch({type: 'SIGNED_IN', provider: payload})) 
-    .catch(err => alert(err))
+            .catch(err => alert(err.response.data.message))
     }
 
 }

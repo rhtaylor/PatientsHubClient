@@ -40,7 +40,7 @@ class App extends Component{
             <NavBar /> 
             <Route exact path="/About" render={()=> <About />} />
             <Route exact path="/SignUp" render={() => <Form />} /> 
-            <Route exact path="/SignIn" render={() => <SignIn signIn={()=> this.props.signIn()}/>} />
+            <Route exact path="/SignIn" render={() => <SignIn signIn={(arg) => this.props.signIn(arg)}/>} />
             <Route exact path="/charts" render={(routerProps) => <Charts {...routerProps} />} /> 
             <Route exact path="/patients" render={()=><Patients />} />  
             <Route exact path="/providers" render={(routerProps) =><Providers {...routerProps} providers={this.props.providers} getProviders={this.props.getProviders}/>} />
