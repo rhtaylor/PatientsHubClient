@@ -9,7 +9,8 @@ import Providers from './components/Providers'
 //import Providers from './components/PsudoProviders' 
 import Patients from './components/Patients'  
 import SignIn from './forms/SignIn'
-import { getProviders} from './actions/actions'
+import { getProviders} from './actions/actions' 
+import { signIn } from './actions/actions'
 import Form from './components/Form'  
 import { connect } from 'react-redux';
 import {
@@ -32,13 +33,14 @@ class App extends Component{
     <div className="patientshubimg" /*className="App" */>
       <header /*className="App-header"*/> 
         <br/> 
-        <h1 className="patientshub">Patients Hub</h1>
+        <h1 className="patientshub">Patients Hub</h1> 
+        {this.props.providers === "LOADING" ? <h4 className='dark'>{this.props.providers}</h4> : null }
         <Router > 
           <div> 
             <NavBar /> 
             <Route exact path="/About" render={()=> <About />} />
             <Route exact path="/SignUp" render={() => <Form />} /> 
-            <Route exact path="/SignIn" render={() => <SignIn />} />
+            <Route exact path="/SignIn" render={() => <SignIn signIn={()=> this.props.signIn()}/>} />
             <Route exact path="/charts" render={(routerProps) => <Charts {...routerProps} />} /> 
             <Route exact path="/patients" render={()=><Patients />} />  
             <Route exact path="/providers" render={(routerProps) =><Providers {...routerProps} providers={this.props.providers} getProviders={this.props.getProviders}/>} />
@@ -58,7 +60,11 @@ const mstp =(state)=>{
     providers: state.providers}
 }  
 const mdtp = (dispatch) =>{ 
-return{ getProviders: () => dispatch(getProviders()) }
+return{ getProviders: () => dispatch(getProviders()), 
+  
+        signIn: (payload) => dispatch(signIn(payload))
+
+}
   
 }
 

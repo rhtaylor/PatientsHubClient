@@ -1,3 +1,5 @@
+import SignIn from "../forms/SignIn";
+
 export function addProvider(action){   
     debugger
     return (dispatch) => { 
@@ -67,6 +69,22 @@ export function getRecords(){
 
 
  }
+} 
+
+export function signIn(payload){ 
+    return (dispatch) =>{
+        dispatch({type: 'SIGN_IN', provider: "LOADING"}); 
+        return fetch('http://localhost:3000/api/v1/providers/login', {
+            method: "POST", headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify(payload)
+    })
+    .then(res => res.json()) 
+    .then(data => dispatch({type: 'SIGNED_IN', provider: payload})) 
+    .catch(err => alert(err))
+    }
+
 }
 // export function fetchAstronauts() {
 //     return (dispatch) => {
