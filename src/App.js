@@ -1,7 +1,8 @@
 import React, {Component} from 'react';  
 import About from './components/About'
 import logo from './logo.svg';
-import './App.css';
+import './App.css'; 
+import './css/app.css'
 import Provider from './components/Provider' 
 import Charts from './components/Charts'
 import Providers from './components/Providers'  
@@ -44,8 +45,9 @@ class App extends Component{
           </div> 
           </Router>
         {/* <Route path='/movies' render={routerProps => <MoviesPage {...routerProps} movies={this.state.movies} />} /> */}
+        <footer>Im a footer!</footer>
+      </header> 
       
-      </header>
     </div>
   );
 }

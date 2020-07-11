@@ -10,9 +10,11 @@ a{
 .bar a:hover {
   color: lightgreen;
 }
-.bar{  
+.bar{   
+
 justify-content: center; 
 border-bottom: black;
 width: max-content; 
-height: auto;
+height: auto; 
+min-height: 200px;
 }

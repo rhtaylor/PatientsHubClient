@@ -1,0 +1,12 @@
+.signIn{
+    width: auto;
+    min-width: 500px; 
+    max-width: 500px; 
+    min-height: 500px; 
+    max-height: 500px;  
+    align-items: center;
+    
+    justify-content: space-evenly ;
+    justify-content: center; 
+    background-image: url('../css/signIn.jpg'); 
+}
