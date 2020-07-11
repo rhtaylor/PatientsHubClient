@@ -83,7 +83,9 @@ export function signIn(payload){
     })
     .then(res =>{ debugger
         return res.json() }) 
-    .then(data => { debugger
+    .then(data => { debugger 
+        // This is throwing errors, Once functional will add 
+        // a logged_in: true flag to the Provider object
       return  dispatch({type: 'SIGNED_IN', provider: data}) })
     .catch(err => alert(err.response.data.message))
     }
