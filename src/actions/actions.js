@@ -89,11 +89,13 @@ export function signIn(payload){
     }
 
 }
-// export function fetchAstronauts() {
-//     return (dispatch) => {
-//         dispatch({ type: 'START_ADDING_ASTRONAUTS_REQUEST' });
-//         fetch('http://api.open-notify.org/astros.json')
-//             .then(response => response.json())
-//             .then(astronauts => dispatch({ type: 'ADD_ASTRONAUTS', astronauts }));
-//     };
-// }
+
+export function fetchMyPatients(id){ 
+    return (dispatch) =>{ 
+        debugger
+        dispatch({type: 'GET_PROVIDER_PATIENTS', patients: 'LOADING'}); 
+        fetch(`http://localhost:3000/api/v1/providers/${id}/my_patients`) 
+        .then(res => res.json()) 
+        .then(data => dispatch({type: 'GOT_PROVIDER_PATIENTS', patients: data})
+          )  }
+} 

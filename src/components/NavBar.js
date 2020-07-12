@@ -20,7 +20,7 @@ class NavBar extends Component{
             <NavLink style={{ marginRight: '10px' }} to="/charts" >Charts</NavLink>
             <NavLink style={{ marginRight: '10px' }} to="/patients" >Patients</NavLink>
             <NavLink style={{ marginRight: '10px' }} to="/providers">Providers</NavLink>
-             <NavLink style={{ marginRight: '10px' }} to="/providers/:id">You</NavLink>
+             <NavLink style={{ marginRight: '10px' }} to="/providers/SignedIn">You</NavLink>
 
           </div>
         ) 

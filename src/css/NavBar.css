@@ -15,6 +15,7 @@ a{
 justify-content: center; 
 border-bottom: black;
 width: max-content; 
-height: auto; 
-min-height: 200px;
+height: auto;  
+max-height: 50px;
+min-height: 50px;
 }

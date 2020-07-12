@@ -6,8 +6,7 @@ import './css/app.css'
 import Provider from './components/Provider' 
 import Charts from './components/Charts'
 import Providers from './components/Providers'  
-import {SignedIn} from './components/stateless/SignedIn' 
-
+import SignedIn from './components/SignedIn'
 //import Providers from './components/PsudoProviders' 
 import Patients from './components/Patients'  
 import SignIn from './forms/SignIn'
@@ -32,7 +31,7 @@ class App extends Component{
     .catch(err =>console.log(err))
   } 
   checkLoggedIn = () =>{ 
-
+    debugger
     if (this.props.signed_in.length === 0){ 
         return <p>Zero currently Logged In</p> } 
         else {  debugger 
@@ -46,9 +45,9 @@ class App extends Component{
   return (
     <div className="patientshubimg" /*"App" */  >
       <header  className="App-header" >  
-        {this.props.signed_in.length >= 0 && this.props.signed_in[0] !== undefined ? <Router ><Redirect to={{ pathname: "/providers/:id", provider: this.props.signed_in[0] }} /></Router> : null}
+        { this.props.signed_in && this.props.signed_in.length >= 0 && this.props.signed_in[0] !== undefined ? <Router ><Redirect to={{ pathname: "/providers/signedIn", state: {provider: this.props.signed_in[0]}}} /></Router> : null}
         <br/>
-  {this.props.signed_in.length > 0 ? <><h1 className="patientshub">Welcome {this.props.signed_in[0].name}</h1><p> get to charting</p></> :   
+  { this.props.signed_in && this.props.signed_in.length > 0 ? <><h1 className="patientshub">Welcome {this.props.signed_in[0].name}</h1><p> get to charting</p></> :   
       <h1 className="patientshub">Patients Hub <p>chart it or it didn't happen</p></h1>  
   }
         
@@ -61,7 +60,14 @@ class App extends Component{
             <Route exact path="/charts" render={(routerProps) => <Charts {...routerProps} />} /> 
             <Route exact path="/patients" render={()=><Patients />} />  
             <Route exact path="/providers" render={(routerProps) =><Providers {...routerProps} providers={this.props.providers} getProviders={this.props.getProviders}/>} />
-            <Route exact path="/providers/:id" render={()=><Provider provider={this.props.signed_in[0]} />} />
+            {/* <Route exact path="/providers/:id" render={()=><Provider provider={this.props.signed_in[0]} />} /> */}
+            <Route exact strict path="/providers/:id" render={({ location }) => {
+              if (location.pathname === window.location.pathname) {
+                return <Provider provider={ this.props.signed_in[0] !== undefined ? this.props.signed_in[0] : {id: 1, name: "doc", email: "haha"}} />;
+              }
+              return null;
+            }} /> 
+            <Route exact path="/providers/SignedIn" render={()=><SignedIn you={this.props.signed_in[0]}/>} />
             {/* {this.props.signed_in.length >= 0 && this.props.signed_in[0] !== undefined ? <Redirect to="/providers/:id" /> : null } */}
             {/* <Route exact path={`/providers/${this.props.signed_in[0].id}`} render={() => <Provider key={this.props.signed_in[0].id} {...routerProps} provider={this.props.signed_in[0]} />} /> */} 
           </div> 
