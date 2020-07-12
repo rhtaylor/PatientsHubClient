@@ -46,10 +46,11 @@ class App extends Component{
   return (
     <div className="patientshubimg" /*"App" */  >
       <header  className="App-header" >  
-        {this.props.signed_in.length > 0 ? <Router ><Redirect to="/providers/:id" /></Router> : null}
-        <br/>  
-          <h1 className="patientshub">Patients Hub <p>chart it or it didn't happen</p></h1>  
-        
+        {this.props.signed_in.length >= 0 && this.props.signed_in[0] !== undefined ? <Router ><Redirect to={{ pathname: "/providers/:id", provider: this.props.signed_in[0] }} /></Router> : null}
+        <br/>
+  {this.props.signed_in.length > 0 ? <><h1 className="patientshub">Welcome {this.props.signed_in[0].name}</h1><p> get to charting</p></> :   
+      <h1 className="patientshub">Patients Hub <p>chart it or it didn't happen</p></h1>  
+  }
         
         <Router > 
           <div> 
@@ -60,7 +61,7 @@ class App extends Component{
             <Route exact path="/charts" render={(routerProps) => <Charts {...routerProps} />} /> 
             <Route exact path="/patients" render={()=><Patients />} />  
             <Route exact path="/providers" render={(routerProps) =><Providers {...routerProps} providers={this.props.providers} getProviders={this.props.getProviders}/>} />
-            <Route path="/providers/:id" render={()=><Provider provider={this.props.signed_in[0]} />} />
+            <Route exact path="/providers/:id" render={()=><Provider provider={this.props.signed_in[0]} />} />
             {/* {this.props.signed_in.length >= 0 && this.props.signed_in[0] !== undefined ? <Redirect to="/providers/:id" /> : null } */}
             {/* <Route exact path={`/providers/${this.props.signed_in[0].id}`} render={() => <Provider key={this.props.signed_in[0].id} {...routerProps} provider={this.props.signed_in[0]} />} /> */} 
           </div> 

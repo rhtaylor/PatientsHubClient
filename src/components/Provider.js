@@ -5,8 +5,9 @@ export default class Provider extends Component{
         super(props)
     } 
 
-        render(){
-        return (<div key={this.props.provider.created_at} className="vc"> 
+        render(){ 
+            debugger
+        return (<div key={this.props.provider.name} className="vc"> 
             <h1>YO</h1>
             <h1 key={this.props.provider.id}>{this.props.provider.name}</h1>
             <h2 key={this.props.provider.email}>{this.props.provider.email}</h2>

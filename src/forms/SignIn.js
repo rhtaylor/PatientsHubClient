@@ -46,8 +46,9 @@ export default class SignIn extends Component{
         debugger
         event.preventDefault();
         this.props.signIn(this.state) 
-        .then(res => res )
+        .then(res => res) 
         debugger
+        
    
     } 
 
@@ -55,14 +56,17 @@ export default class SignIn extends Component{
     checkForRedirect = () =>{  
         debugger  
         if (this.props.userIn.length >= 0 && this.props.userIn[0] !== undefined){ 
-            debugger
+           
         let lastSignedIn = this.props.userIn.length === 0 ? 0 : this.props.userIn.length - 1
         let userIn = this.props.userIn 
-        this.props.history.push(`/providers/${userIn[lastSignedIn].id}`)  
-        debugger
+        debugger 
+        return (
+                <Router ><Redirect to={{ pathname: "/providers/:id", state: {provider: userIn} }} /></Router> 
+        )
+      
        
         
-        }}
+        } }
         
         
     render(){  
@@ -71,7 +75,7 @@ export default class SignIn extends Component{
         
 
         (           <div  className="signIn"> 
-                    
+                    {this.checkForRedirect()}
                     <form className="signIn" onSubmit={(e) => this.handleSubmit(e)} > 
                    
                     <label>Email  </label>
