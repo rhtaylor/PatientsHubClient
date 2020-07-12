@@ -4,7 +4,7 @@ export default function manageProviders(state = {
     signed_in: []
 }, action) {
     let {type} = action
-        
+        debugger
     switch(type){
         case "ADDING_PROVIDER":
         return {...state, providers: action.provider};  
@@ -30,9 +30,11 @@ export default function manageProviders(state = {
         return {...state, providers: action.provider}; 
         case 'SIGNED_IN':   
          
-        action.provider.signed_in = true 
-        
-        return {...state, signed_id: [action.provider] }
+        action.provider.signed = true  
+        debugger
+         let newArray = state.signed_in.concat(action.provider) 
+         debugger
+        return {...state, signed_in: [...newArray] }
         default: 
         return state;
     }

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import fetchObj from './fetchObj'
+import fetchObj from '../components/fetchObj'
 import '../css/SignIn.css';  
 import thunk from 'redux-thunk';
 import ActiveStorageProvider from 'react-activestorage-provider' 
-import {PostForm} from './Upload';
+import {PostForm} from '../components/Upload';
 import { connect } from 'react-redux';
  
 import {addProvider, addingProvider} from '../actions/actions'
@@ -47,7 +47,8 @@ class Form extends Component{
         
     }
 
-    render(){
+    render(){ 
+        debugger
     return(
         <div className="signIn"> 
         <form className="signIn" onSubmit={(e)=>this.handleSubmit(e)}> 
@@ -86,8 +87,9 @@ const mdtp = (dispatch) => {
     } 
 
 }
-const mstp = (s) => {
-    return {s : s}
+const mstp = (s) => { 
+    debugger
+    return {s : s.providers}
 }
 
 export default connect(mstp, mdtp)(Form)

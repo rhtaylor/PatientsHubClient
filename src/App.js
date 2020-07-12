@@ -13,7 +13,7 @@ import Patients from './components/Patients'
 import SignIn from './forms/SignIn'
 import { getProviders} from './actions/actions' 
 import { signIn } from './actions/actions'
-import Form from './components/Form'  
+import Form from './forms/Form'  
 import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -29,14 +29,25 @@ class App extends Component{
     .then(res => res.json()) 
     .then(data => console.log(data)) 
     .catch(err =>console.log(err))
-  }
+  } 
+  checkLoggedIn = () =>{ 
+
+    if (this.props.signed_in.length === 0){ 
+        return <p>Zero currently Logged In</p> } 
+        else {  debugger 
+          let count = this.props.signed_in.length 
+          debugger 
+        return <p>{count} logged in</p>
+  } 
+}
   render(){ 
     debugger
   return (
     <div className="patientshubimg" /*"App" */  >
       <header  className="App-header" > 
-        <br/> 
-        <h1 className="patientshub">Patients Hub <p>chart it or it didn't happen</p></h1> 
+        <br/>  
+               <h1 className="patientshub">Patients Hub <p>chart it or it didn't happen</p></h1>  
+        
         {this.props.providers === "LOADING" ? <h4 className='dark'>{this.props.providers}</h4> : null }
         <Router > 
           <div> 
@@ -50,7 +61,7 @@ class App extends Component{
           </div> 
           </Router>
         
-        <footer>{this.props.signed_in.length > 0 ? this.props.signed_in.map(pro => <SignedIn prop={pro} />) : null} </footer>
+        <footer>{this.checkLoggedIn()}</footer>
       </header>  
       
     </div>
@@ -58,7 +69,8 @@ class App extends Component{
 }
 } 
 
-const mstp =(state)=>{
+const mstp =(state)=>{ 
+  debugger
   return{ 
     providers: state.providers, 
     signed_in: state.providers.signed_in 
