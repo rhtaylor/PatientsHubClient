@@ -25,9 +25,11 @@ display: flex;
   
 
 
-.App-header {
+.App-header { 
+  min-width: 800px ;
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 100vh; 
+  height: auto;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -38,11 +40,14 @@ display: flex;
 
 .App-link {
   color: #61dafb;
-} 
- 
+}  
+
+ /*
+
 .warn.hide-opacity{
     opacity: 0;
 } 
+/* wanted to make a flash warning.  
 
 .warn { 
     
@@ -58,3 +63,4 @@ display: flex;
 }
 
 
+*/

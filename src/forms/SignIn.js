@@ -41,15 +41,17 @@ export default class SignIn extends Component{
 
     render(){
         return( <div  className="signIn">
-                    <form onSubmit={(e) =>{ e.preventDefault()
+                    <form className="signIn" onSubmit={(e) =>{ e.preventDefault()
                         return this.props.signIn(this.state)}} > 
                     <label>Email  </label>
                     <input name="email" placeholder="Enter email" value={this.state.email} 
-                    onChange={this.handleChange} /> 
+                    onChange={this.handleChange} />
+                    <br />
                     <label>Password  </label> 
                     <input type="password" name="password" placeholder="Enter password" value={this.state.password} 
-                    onChange={(e)=>this.handleChange(e)} /> 
-                    <input type="submit" value="submit"  />
+                    onChange={(e)=>this.handleChange(e)} />  
+                    <br/>
+                    <input type="submit" value="chart it or it didn't happen"  />
                     </form>
                 </div>
 

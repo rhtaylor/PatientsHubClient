@@ -30,12 +30,13 @@ class App extends Component{
     .then(data => console.log(data)) 
     .catch(err =>console.log(err))
   }
-  render(){
+  render(){ 
+    debugger
   return (
-    <div className="patientshubimg" /*className="App" */>
-      <header /*className="App-header"*/> 
+    <div className="patientshubimg" /*"App" */  >
+      <header  className="App-header" > 
         <br/> 
-        <h1 className="patientshub">Patients Hub</h1> 
+        <h1 className="patientshub">Patients Hub <p>chart it or it didn't happen</p></h1> 
         {this.props.providers === "LOADING" ? <h4 className='dark'>{this.props.providers}</h4> : null }
         <Router > 
           <div> 
@@ -49,7 +50,7 @@ class App extends Component{
           </div> 
           </Router>
         
-        <footer>{this.props.signed_in.length > 0 ? this.props.signed_in.map(pro => <SignedIn prop={pro} />) : <Router ><NavBar signedIn={false} /></Router> }</footer>
+        <footer>{this.props.signed_in.length > 0 ? this.props.signed_in.map(pro => <SignedIn prop={pro} />) : null} </footer>
       </header>  
       
     </div>

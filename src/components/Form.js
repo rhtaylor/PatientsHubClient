@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import fetchObj from './fetchObj'
-import '../css/form.css';  
+import '../css/SignIn.css';  
 import thunk from 'redux-thunk';
 import ActiveStorageProvider from 'react-activestorage-provider' 
 import {PostForm} from './Upload';
@@ -49,8 +49,8 @@ class Form extends Component{
 
     render(){
     return(
-        <div className="form"> 
-        <form className="form" onSubmit={(e)=>this.handleSubmit(e)}> 
+        <div className="signIn"> 
+        <form className="signIn" onSubmit={(e)=>this.handleSubmit(e)}> 
             <label>Name </label> 
                 <input type="text" id="name" value={this.state.name} onChange={this.handleChange}/>  
             <br/>

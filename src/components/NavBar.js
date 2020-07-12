@@ -12,8 +12,8 @@ class NavBar extends Component{
       <div className="bar"> 
       <NavLink style={{ marginRight: '10px' }} to="/SignUp"  >SignUp</NavLink> 
       <NavLink style={{ marginRight: '10px' }} to="/SignIn"  >SignIn</NavLink> 
-      </div> ) 
-       } else if (this.props.signedIn){ 
+      </div> )  
+       }  else if (this.props.signedIn){ 
          return (
           <div className="bar">
             <NavLink style={{ marginRight: '10px' }} to="/About"  >About</NavLink>
