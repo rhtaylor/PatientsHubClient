@@ -1,7 +1,7 @@
 import React, { Component } from 'react'; 
 import { connect } from 'react-redux';  
 import {getProviders} from '../actions/actions'
-import {Provider} from './Provider'  
+import Provider from './Provider'  
 import { Link, NavLink } from 'react-router-dom';
 import {
     BrowserRouter as Router,

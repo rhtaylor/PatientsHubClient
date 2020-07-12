@@ -1,8 +1,13 @@
-import React, { Component } from 'react' 
+import React, { Component } from 'react'  
 import {signIn} from '../actions/actions'
-import {connect} from 'react-redux'
+import {connect} from 'react-redux' 
+import {Provider} from '../components/Provider'
 import '../css/SignIn.css' 
-
+import {
+    BrowserRouter as Router,
+    Route,
+    Redirect
+} from 'react-router-dom';
 export default class SignIn extends Component{ 
     constructor(props){ 
     super(props)
@@ -36,13 +41,39 @@ export default class SignIn extends Component{
         console.log(this.state)
 
     }  
-
     
+    handleSubmit =(event)=>{ 
+        debugger
+        event.preventDefault();
+        this.props.signIn(this.state) 
+        .then(res => res )
+        debugger
+   
+    } 
 
-    render(){
-        return( <div  className="signIn">
-                    <form className="signIn" onSubmit={(e) =>{ e.preventDefault()
-                        return this.props.signIn(this.state)}} > 
+
+    checkForRedirect = () =>{  
+        debugger  
+        if (this.props.userIn.length >= 0 && this.props.userIn[0] !== undefined){ 
+            debugger
+        let lastSignedIn = this.props.userIn.length === 0 ? 0 : this.props.userIn.length - 1
+        let userIn = this.props.userIn 
+        this.props.history.push(`/providers/${userIn[lastSignedIn].id}`)  
+        debugger
+       
+        
+        }}
+        
+        
+    render(){  
+        return ( 
+
+        
+
+        (           <div  className="signIn"> 
+                    
+                    <form className="signIn" onSubmit={(e) => this.handleSubmit(e)} > 
+                   
                     <label>Email  </label>
                     <input name="email" placeholder="Enter email" value={this.state.email} 
                     onChange={this.handleChange} />
@@ -55,7 +86,7 @@ export default class SignIn extends Component{
                     </form>
                 </div>
 
-        )
+         ) )
     }
-} 
+}
 
