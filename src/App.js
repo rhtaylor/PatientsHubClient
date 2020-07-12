@@ -38,16 +38,17 @@ class App extends Component{
         else {  debugger 
           let count = this.props.signed_in.length 
           
-        return <p>{count} logged in</p>
+        return <p>You're logged in</p>
   } 
 }
   render(){ 
     debugger
   return (
     <div className="patientshubimg" /*"App" */  >
-      <header  className="App-header" > 
+      <header  className="App-header" >  
+        {this.props.signed_in.length > 0 ? <Router ><Redirect to="/providers/:id" /></Router> : null}
         <br/>  
-               <h1 className="patientshub">Patients Hub <p>chart it or it didn't happen</p></h1>  
+          <h1 className="patientshub">Patients Hub <p>chart it or it didn't happen</p></h1>  
         
         
         <Router > 

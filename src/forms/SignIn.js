@@ -1,7 +1,7 @@
 import React, { Component } from 'react'  
 import {signIn} from '../actions/actions'
 import {connect} from 'react-redux' 
-import {Provider} from '../components/Provider'
+import Provider from '../components/Provider'
 import '../css/SignIn.css' 
 import {
     BrowserRouter as Router,

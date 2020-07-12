@@ -22,7 +22,7 @@ class VirtualCharts extends Component{
         } else { 
             debugger
         return <ul> { charts.map(chart =>{    
-            return [<Router ><li key={chart.id}><Link to={`${this.props.match.url}/${chart.id}`}>{chart.date}</Link></li>,    
+            return [<Router ><li key={chart.id}><Link to={`${this.props.match.url}/${chart.id}`}>{chart.date}</Link></li>    
             <Route exact path={`/charts/${chart.id}`} render={(routerProps) => <ChartFront {...routerProps} key={chart.id} rest={routerProps} providers={providers} provider_id={chart.provider_id} patients={patients} patient_id={chart.patient_id} date={chart.date} note={chart.note} />} /> 
             </Router>] 
                          } )}</ul> 

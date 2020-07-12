@@ -11,8 +11,7 @@ export const ChartFront = ({date, note, rest, providers, provider_id, patient_id
     return(  
         <div className="jumbotron"  >
         <div  id="cardfront" >
-            <span>{date}</span> 
-            < hr/>   
+                <span>{date.match(/[0-9]{4}-[0-9]{2}-[0-9]{2}/g)[0]}</span>  
             < hr/><h3 className="card-title">{thisChartProvider[0].name } :</h3>
             <span><h3 className="card-text">{note}</h3></span>
         </div>  
