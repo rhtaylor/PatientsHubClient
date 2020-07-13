@@ -15,9 +15,13 @@ export default class NoteForm extends Component{
         })
     }  
     handleSubmit(e){
-        e.preventDefault()
+        e.preventDefault() && e.persist()
+        let savE = e
+        let provider_id = savE.target.parentElement.id
+        let patient_id = savE.target.parentElement.parentElement.parentElement.id
         debugger
-       ; 
+        this.props.addNoteToChart(provider_id, patient_id, this.state)
+        
     }
     render(){ 
         debugger

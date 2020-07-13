@@ -34,7 +34,7 @@ export default function manageProviders(state = {
         debugger
          let newArray = state.signed_in.concat(action.provider) 
          debugger
-        return {...state, signed_in: [...newArray] } 
+        return {...state, signed_in: newArray } 
         case 'GET_PROVIDER_PATIENTS': 
         debugger 
         return {...state, patients: [...action.patients]}; 

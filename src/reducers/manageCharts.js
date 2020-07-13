@@ -16,7 +16,12 @@ export default function manageCharts(state = {
         case 'GOT_RECORDS':  
         let newCharts = action.charts.map(c => c.chart)
         return { ...state,  charts: [...newCharts] }
-        
+        case 'ADDING_NOTE':  
+        debugger
+        return {...state, charts: [...state.charts.concat(action.charts)]}
+        case 'UPDATED':  
+        debugger
+        return {...state, charts: [action.charts]}
         default:
             return state;
     }

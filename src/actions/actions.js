@@ -101,8 +101,10 @@ export function fetchMyPatients(id){
 }  
 
 export function addNoteToChart(provider_id, patient_id, payload){
-    return (dispatch) =>{
-        dispatch({type: 'ADDING_NOTE', chart: "UPDATING"}); 
+    return (dispatch) =>{ 
+        debugger
+        dispatch({type: 'ADDING_NOTE', charts: "UPDATING"});  
+        debugger
         return fetch(`http:/localhost:3000/api/v1/providers/${provider_id}/patients/${patient_id}/virtual_charts`, {
             method: "POST", headers: {
                 'Accept': 'application/json',
