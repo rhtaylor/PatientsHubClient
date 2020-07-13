@@ -1,9 +1,9 @@
 import React, { Component } from 'react' 
 import {connect} from 'react-redux'
-import { fetchMyPatients} from '../actions/actions' 
+import { fetchMyPatients, addNoteToChart} from '../actions/actions' 
 import NoteForm from '../forms/NoteForm'
 class SignedIn extends Component{ 
-    debugger  
+    
 
     componentDidMount(){ 
         let id = this.props.you.id 
@@ -31,7 +31,8 @@ const mstp = (s)=>{
 } 
 const mdtp = (dispatch)=>{
     return{
-        fetchMyPatients: (id)=> dispatch(fetchMyPatients(id))
+        fetchMyPatients: (id)=> dispatch(fetchMyPatients(id)), 
+        addNoteToChart: (note) => dispatch(addNoteToChart()())
     }
 }
 export default connect(mstp, mdtp)(SignedIn)

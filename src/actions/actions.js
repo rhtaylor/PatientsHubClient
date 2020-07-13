@@ -94,8 +94,23 @@ export function fetchMyPatients(id){
     return (dispatch) =>{ 
         debugger
         dispatch({type: 'GET_PROVIDER_PATIENTS', patients: 'LOADING'}); 
-        fetch(`http://localhost:3000/api/v1/providers/${id}/my_patients`) 
+        return fetch(`http://localhost:3000/api/v1/providers/${id}/my_patients`) 
         .then(res => res.json()) 
         .then(data => dispatch({type: 'GOT_PROVIDER_PATIENTS', patients: data})
           )  }
-} 
+}  
+
+export function addNoteToChart(provider_id, patient_id, payload){
+    return (dispatch) =>{
+        dispatch({type: 'ADDING_NOTE', chart: "UPDATING"}); 
+        return fetch(`http:/localhost:3000/api/v1/providers/${provider_id}/patients/${patient_id}/virtual_charts`, {
+            method: "POST", headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify(payload)
+        }).then(res => res.json) 
+        .then(data => dispatch({type: 'UPDATED', charts: data}))
+
+        }
+    
+}
