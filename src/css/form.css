@@ -6,3 +6,9 @@
   justify-content: left;
 } 
 
+#note{ 
+  text-shadow: black;
+  min-width: 500; 
+  max-height: 400;
+} 
+

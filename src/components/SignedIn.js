@@ -1,7 +1,7 @@
 import React, { Component } from 'react' 
 import {connect} from 'react-redux'
 import { fetchMyPatients} from '../actions/actions' 
-
+import NoteForm from '../forms/NoteForm'
 class SignedIn extends Component{ 
     debugger  
 
@@ -14,7 +14,7 @@ class SignedIn extends Component{
 
      showPatients = ()=>{ 
          debugger
-     return   this.props.patients && this.props.patients.map((paty, i) => <li key={i}>{paty.name}: {paty.age}</li> )
+     return   this.props.patients && this.props.patients.map((paty, i) => <NoteForm key={i} addNote={paty} /> )
      }
 
     render(){
