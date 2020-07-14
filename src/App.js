@@ -12,7 +12,8 @@ import Patients from './components/Patients'
 import SignIn from './forms/SignIn'
 import { getProviders} from './actions/actions' 
 import { signIn } from './actions/actions'
-import Form from './forms/Form'  
+import Form from './forms/Form'   
+import PatientsHubContainer from './containers/PatientsHubContainer'
 import { connect } from 'react-redux';
 import {
   BrowserRouter as Router,
@@ -54,7 +55,7 @@ class App extends Component{
         <Router > 
           <div> 
             <NavBar signedIn={this.props.signed_in.length > 0 ? true : false} /> 
-            <Route exact path="/About" render={()=> <About />} />
+            <Route path="/" render={()=><PatientsHubContainer />} />
             <Route exact path="/SignUp" render={() => <Form />} /> 
             <Route exact path="/SignIn" render={(routerProps) => <SignIn {...routerProps} userIn={this.props.signed_in} signIn={(arg) => this.props.signIn(arg)}/>} />
             <Route exact path="/charts" render={(routerProps) => <Charts {...routerProps} />} /> 
