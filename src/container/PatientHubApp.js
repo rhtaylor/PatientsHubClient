@@ -1,6 +1,8 @@
 import React from 'react'; 
 import HomeComponent from './HomeComponent' 
-import Forms from '../forms/Forms' 
+import Forms from '../forms/Forms'  
+import '../css/index.css';
+import '../css/app.css'
 import {
     BrowserRouter as Router,
     Route,
