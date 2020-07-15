@@ -1,0 +1,12 @@
+#cardfront{
+  
+  justify-content: space-evenly ;
+  justify-content: center; 
+  /* background-image: url('../css/cardFrontPaper.jpg');  */ 
+  background-color: black;
+  min-width: 400px;
+  width:400px; /* or whatever width you want. */
+  max-width:400px; /* or whatever width you want. */
+  background-size: 168px 300px; 
+  
+}

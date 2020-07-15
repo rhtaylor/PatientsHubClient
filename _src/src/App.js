@@ -46,17 +46,13 @@ class App extends Component{
   return (
     <div className="patientshubimg" /*"App" */  >
       <header  className="App-header" >  
-        { this.props.signed_in && this.props.signed_in.length >= 0 && this.props.signed_in[0] !== undefined ? <Router ><Redirect to={{ pathname: "/providers/signedIn", state: {provider: this.props.signed_in[0]}}} /></Router> : null}
-        <br/>
-  { this.props.signed_in && this.props.signed_in.length > 0 ? <><h1 className="patientshub">Welcome {this.props.signed_in[0].name}</h1><p> get to charting</p></> :   
       <h1 className="patientshub">Patients Hub <p>chart it or it didn't happen</p></h1>  
-  }
-        
+  
         <Router > 
           <div> 
             <NavBar signedIn={this.props.signed_in.length > 0 ? true : false} /> 
             <Route path="/" render={()=><PatientsHubContainer />} />
-            <Route exact path="/SignUp" render={() => <Form />} /> 
+            {/* <Route exact path="/SignUp" render={() => <Form />} /> 
             <Route exact path="/SignIn" render={(routerProps) => <SignIn {...routerProps} userIn={this.props.signed_in} signIn={(arg) => this.props.signIn(arg)}/>} />
             <Route exact path="/charts" render={(routerProps) => <Charts {...routerProps} />} /> 
             <Route exact path="/patients" render={()=><Patients />} />  
@@ -71,7 +67,7 @@ class App extends Component{
             <Route exact path="/providers/SignedIn" render={()=><SignedIn you={this.props.signed_in[0]}/>} />
             {/* {this.props.signed_in.length >= 0 && this.props.signed_in[0] !== undefined ? <Redirect to="/providers/:id" /> : null } */}
             {/* <Route exact path={`/providers/${this.props.signed_in[0].id}`} render={() => <Provider key={this.props.signed_in[0].id} {...routerProps} provider={this.props.signed_in[0]} />} /> */} 
-          </div> 
+          </div>  
           </Router>
         
         <footer>{this.checkLoggedIn()}</footer>

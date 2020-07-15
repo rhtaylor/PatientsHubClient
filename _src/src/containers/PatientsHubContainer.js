@@ -7,19 +7,20 @@ import NavBar from '../components/NavBar'
 import {
     BrowserRouter as Router,
     Route,
-    Redirect
+    Redirect, 
+    NavLink
 } from 'react-router-dom'; 
 
 class PatientsHubContainer extends Component{
     render(){
         return( <Route>
-                <div> 
+            <div className="bar">
                      <NavBar />
-                     <Route exact path="/SignUp" render={() => <Form />} /> 
-                      
+                     <Route exact path="/SignUp" render={() => <Form />} />  
                      <Route exact path="/SignIn" render={(routerProps) => <SignIn {...routerProps} userIn={this.props.signed_in} signIn={(arg) => this.props.signIn(arg)} />} />
-               </div> 
-               </Route>)
+                     <br/> 
+                </div> 
+                </Route>)
     }
 
 }  
