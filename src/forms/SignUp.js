@@ -1,11 +1,8 @@
 import React, { Component } from 'react';
-
 import '../css/SignIn.css';  
 import thunk from 'redux-thunk';
 import ActiveStorageProvider from 'react-activestorage-provider' 
-
 import { connect } from 'react-redux';
- 
 import {addProvider, addingProvider} from '../actions/actions'
 
 class Form extends Component{ 
@@ -17,18 +14,9 @@ class Form extends Component{
         password_confirmation: '', 
         
     } 
-    //for adding avatar pic 
-
-    // selected =(e)=>{
-    //      e.persist() && e.preventDefault()
-    //      const savedE = e
-    //     debugger
-    //     this.setState(prestate =>{
-    //         return {...prestate, avatar: savedE.target.value}
-    //     }) 
-    //     console.log(this.state) 
-    //     debugger
-    // }
+    componentDidMount(){
+        
+    }
     handleChange =(event)=>{ 
           
         let {id, value } = event.target 

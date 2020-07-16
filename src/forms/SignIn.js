@@ -52,32 +52,10 @@ export default class SignIn extends Component{
         
    
     } 
-
-
-    checkForRedirect = () =>{  
-        debugger  
-        if (this.props.userIn.length >= 0 && this.props.userIn[0] !== undefined){ 
-           
-        let lastSignedIn = this.props.userIn.length === 0 ? 0 : this.props.userIn.length - 1
-        let userIn = this.props.userIn 
-        debugger 
-        return (
-                <Router ><Redirect to={{ pathname: "/providers/:id", state: {provider: userIn} }} /></Router> 
-        )
-      
-       
-        
-        } }
-        
-        
-    render(){  
-        return ( 
-
-        
-
-        (           <div  className="signIn"> 
-                    {this.checkForRedirect()}
-                    <form className="signIn" onSubmit={(e) => this.handleSubmit(e)} > 
+     render(){  
+        return (   <div className="signIn">
+                    <form className="signIn" onSubmit={(e) => this.handleSubmit(e)}> 
+                     
                    
                     <label>Email  </label>
                     <input name="email" placeholder="Enter email" value={this.state.email} 
@@ -91,7 +69,7 @@ export default class SignIn extends Component{
                     </form>
                 </div>
 
-         ) )
+         ) 
     }
 }
 

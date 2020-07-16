@@ -18,13 +18,7 @@ class HomeComponent extends Component{
             < div className="patientshubimg" /*"App" */ >
                 <header className="App-header" > 
                     <h1 className="patientshub">Patients Hub <p>chart it or it didn't happen</p></h1> 
-                    <Router >
-                        <div>
-                            <NavBar  />  
-                            <Route exact path="/SignUp" render={() => <SignUp />} />
-                            <Route exact path="/SignIn" render={(routerProps) => <SignIn {...routerProps} userIn={this.props.signed_in} signIn={(arg) => this.props.signIn(arg)} />} /> 
-                        </div> 
-                    </Router >
+                   
                 </header > 
                 </div>
         )
