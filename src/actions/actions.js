@@ -71,9 +71,10 @@ export function getRecords(){
  }
 } 
 
-export function signIn(payload){ 
+export function signIn(payload){   
+    debugger
     return (dispatch) =>{ 
-        
+        debugger
         dispatch({type: 'SIGN_IN', provider: "LOADING"}); 
         return fetch('http://localhost:3000/api/v1/providers/login', {
             method: "POST",  
