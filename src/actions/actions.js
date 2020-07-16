@@ -85,13 +85,15 @@ export function signIn(payload){
             }, body: JSON.stringify(payload)
     })
     .then( res =>  res.json()  ) 
-    .then(data => dispatch({type: 'SIGNED_IN', provider: data }) )
+    .then(data => dispatch({type: 'SIGNED_IN', provider: data }) ) 
+    .then(data => fetchMyPatients(data.provider.id))
     .catch(err => alert(err.response.data.message))
     }
 
 }
 
-export function fetchMyPatients(id){ 
+export function fetchMyPatients(id){  
+    debugger
     return (dispatch) =>{ 
         debugger
         dispatch({type: 'GET_PROVIDER_PATIENTS', patients: 'LOADING'}); 
