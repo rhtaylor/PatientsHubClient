@@ -47,7 +47,7 @@ export default class SignIn extends Component{
         debugger
         event.preventDefault();
         this.props.signIn(this.state) 
-        .then(res => res) 
+        
         debugger
         
    

@@ -27,7 +27,7 @@ export default function manageProviders(state = {
         return {...state, providers: [...newProviders], patients: [...newPatients] }; 
         case 'SIGN_IN':  
         
-        return {...state, providers: action.provider}; 
+        return { ...state, signed_in: state.signed_in.concat(action.provider)}; 
         case 'SIGNED_IN':   
          
         action.provider.signed = true  

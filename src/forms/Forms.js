@@ -3,7 +3,8 @@ import NavBar from '../components/NavBar'
 import SignUp from './SignUp'
 import SignIn from './SignIn'   
 import {signIn} from '../actions/actions'
-import {connect} from 'react-redux'
+import {connect} from 'react-redux' 
+import DOM_Display from '../container/DOM_Display'
 import {
     BrowserRouter as Router,
     Route,
@@ -27,7 +28,7 @@ import {
                 <Router >
                     <div>
                         <NavBar />
-                        
+                        <DOM_Display loggedInData={this.props.providers} />
                         <Route exact path="/SignIn" render={(routerProps) => <SignIn {...routerProps} key={10} signIn={this.props.signIn}/>} /> 
                         <Route exact path="/SignUp" render={(routerProps) => <SignUp {...routerProps} key={20}  />} />
                     </div>
@@ -38,7 +39,8 @@ import {
                  )}}  
 
 
-    const mstp =(state)=>{
+    const mstp =(state)=>{ 
+        debugger
         return{providers: state.providers}
     } 
     const mdtp =(dispatch)=>{

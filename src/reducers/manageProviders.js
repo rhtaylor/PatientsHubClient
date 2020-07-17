@@ -26,13 +26,14 @@ export default function manageProviders(state = {
               let newPatients = action.charts.map(chart => chart.patient)
         return {...state, providers: [...newProviders], patients: [...newPatients] }; 
         case 'SIGN_IN':  
+        debugger
+        return { ...state, signed_in: state.signed_in.concat(action.provider) };   
         
-        return {...state, providers: action.provider}; 
         case 'SIGNED_IN':   
          
         action.provider.signed = true  
         debugger
-         let newArray = state.signed_in.concat(action.provider) 
+         let newArray = [action.provider] 
          debugger
         return {...state, signed_in: newArray } 
         case 'GET_PROVIDER_PATIENTS': 

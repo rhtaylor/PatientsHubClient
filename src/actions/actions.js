@@ -76,7 +76,7 @@ export function signIn(payload){
     return (dispatch) =>{ 
         debugger
         dispatch({type: 'SIGN_IN', provider: "LOADING"}); 
-        return fetch('http://localhost:3000/api/v1/providers/login', {
+         return fetch('http://localhost:3000/api/v1/providers/login', {
             method: "POST",  
             mode: 'cors',
             headers: {
@@ -84,11 +84,9 @@ export function signIn(payload){
                 'Content-Type': 'application/json'
             }, body: JSON.stringify(payload)
     })
-    .then( res =>  res.json()  ) 
-    .then(data => dispatch({type: 'SIGNED_IN', provider: data }) ) 
-    .then(data => fetchMyPatients(data.provider.id))
-    .catch(err => alert(err.response.data.message))
-    }
+    .then( res =>  res.json() ) 
+    .then(data => dispatch( {type: 'SIGNED_IN', provider: data } )  )  
+}
 
 }
 
