@@ -8,6 +8,10 @@ class RootContainer extends Component{
             
         </div>)
     }
-} 
+}  
+const mstp =(state)=>{ 
+    debugger
+    return{myPatients: state.providers.patients }
+}
 
-export default connect()(RootContainer)
+export default connect(mstp)(RootContainer)

@@ -1,4 +1,9 @@
 .softAlert{
     color: deeppink; 
     background-color: deeppink;
+} 
+
+.success{
+    background-color: greenyellow; 
+    color: black;
 }
