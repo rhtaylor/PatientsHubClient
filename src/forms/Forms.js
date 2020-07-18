@@ -1,8 +1,9 @@
 import React, { Component } from 'react' 
-import NavBar from '../components/NavBar'
+import NavBar from '../components/NavBar' 
+import {v1 as uuid} from 'uuid'
 import SignUp from './SignUp'
 import SignIn from './SignIn'   
-import {signIn} from '../actions/actions'
+import {signIn, fetchMyPatients} from '../actions/actions'
 import {connect} from 'react-redux' 
 import DOM_Display from '../container/DOM_Display'
 import {
@@ -11,26 +12,31 @@ import {
     
 } from 'react-router-dom'; 
 
- class Forms extends Component{ 
+ class Forms extends React.PureComponent{ 
     constructor(props){
         super(props) 
 
     } 
-    componentDidMount(){
+    componentDidMount(){ 
+        debugger
        
-    }
+    } 
+
+   
 
     render(){ 
-        debugger
+        debugger 
+        
         return( 
                 
                 <div> 
-                <Router >
+                <Router > 
+                  
                     <div>
                         <NavBar />
                         <DOM_Display loggedInData={this.props.providers} />
-                        <Route exact path="/SignIn" render={(routerProps) => <SignIn {...routerProps} key={10} signIn={this.props.signIn}/>} /> 
-                        <Route exact path="/SignUp" render={(routerProps) => <SignUp {...routerProps} key={20}  />} />
+                        <Route exact path="/SignIn" render={(routerProps) => <SignIn {...routerProps} key={uuid()} signIn={this.props.signIn}/>} /> 
+                        <Route exact path="/SignUp" render={(routerProps) => <SignUp {...routerProps} key={uuid()}  />} />
                     </div>
                 </Router >
                     
@@ -41,12 +47,10 @@ import {
 
     const mstp =(state)=>{ 
         debugger
-        return{providers: state.providers}
+        return{providers: state.providers, 
+               signed_in: state.providers.signed_in
+            }
     } 
-    const mdtp =(dispatch)=>{
-        return{
-            signIn:(payload) => dispatch(signIn(payload)), 
-        }
-    }
+   
 
-    export default connect(mstp, mdtp)(Forms)
+    export default connect()(Forms)

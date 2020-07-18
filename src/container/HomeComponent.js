@@ -12,13 +12,23 @@ import {
     Route,
     Redirect
 } from 'react-router-dom';
-class HomeComponent extends Component{
+class HomeComponent extends Component{ 
+    componentDidMount(){
+        debugger
+    }
+    
+    componentGate =()=>{
+        debugger
+    } 
+
     render(){
         return(
             < div className="patientshubimg" /*"App" */ >
                 <header className="App-header" > 
+                {this.componentGate()}
+                { (this.props.patients) ? <h1>{this.props.patients[0]}</h1>  : 
                     <h1 className="patientshub">Patients Hub <p>chart it or it didn't happen</p></h1> 
-                   
+        }
                 </header > 
                 </div>
         )

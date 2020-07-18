@@ -9,7 +9,9 @@ import {
     Redirect
 } from 'react-router-dom'; 
 
-export default class SignIn extends Component{ 
+export default class SignIn extends Component{  
+
+
     constructor(props){ 
     super(props)
     this.state = {
@@ -17,7 +19,13 @@ export default class SignIn extends Component{
         password: '' 
     }  
     this.handleChange = this.handleChange.bind(this)
-}
+} 
+
+    componentDidMount(){ 
+        debugger 
+        this.props[0].history.push('/SignIn')
+       
+    }
 
     handleChange = (e) =>{  
         e.preventDefault()
@@ -47,12 +55,13 @@ export default class SignIn extends Component{
         debugger
         event.preventDefault();
         this.props.signIn(this.state) 
-        
+        this.props[0].history.push('/ProviderPatients')
         debugger
         
-   
+        // maybe use router push to render diff componet after the fetch?
     } 
-     render(){  
+     render(){   
+         debugger
         return (   <div className="signIn">
                     <form className="signIn" onSubmit={(e) => this.handleSubmit(e)}> 
                      
@@ -72,4 +81,6 @@ export default class SignIn extends Component{
          ) 
     }
 }
+
+
 

@@ -85,7 +85,10 @@ export function signIn(payload){
             }, body: JSON.stringify(payload)
     })
     .then( res =>  res.json() ) 
-    .then(data => dispatch( {type: 'SIGNED_IN', provider: data } )  )  
+    .then(data => dispatch( {type: 'SIGNED_IN', provider: data } )  )   
+    
+    .catch(err => alert(err)); 
+      
 }
 
 }
@@ -93,7 +96,6 @@ export function signIn(payload){
 export function fetchMyPatients(id){  
     debugger
     return (dispatch) =>{ 
-        debugger
         dispatch({type: 'GET_PROVIDER_PATIENTS', patients: 'LOADING'}); 
         return fetch(`http://localhost:3000/api/v1/providers/${id}/my_patients`) 
         .then(res => res.json()) 
@@ -102,9 +104,7 @@ export function fetchMyPatients(id){
 }  
 
 export function addNoteToChart(provider_id, patient_id, payload){
-    return (dispatch) =>{ 
-        debugger
-        dispatch({type: 'ADDING_NOTE', charts: "UPDATING"});  
+    return (dispatch) =>{ dispatch({type: 'ADDING_NOTE', charts: "UPDATING"});  
         debugger
         return fetch(`http:/localhost:3000/api/v1/providers/${provider_id}/patients/${patient_id}/virtual_charts`, {
             method: "POST", headers: {
