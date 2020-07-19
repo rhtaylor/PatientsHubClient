@@ -5,7 +5,11 @@ import {connect} from 'react-redux'
 import Patients from '../components/Patients' 
 import Patient from '../components/Patient' 
 import Provider from './Provider'
-
+import { NavLink, Link } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Route
+} from 'react-router-dom';
 class ProviderPatients extends Component{
     
     proxyFetch({id}){  
@@ -22,8 +26,14 @@ class ProviderPatients extends Component{
             return <h4>{this.props.signed_in}</h4> }  
             
         else    { debugger  
-            return <div><br/><Provider name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}  /></div> 
-        } 
+            return (<div> 
+                <br/>
+                <Provider name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}  /> 
+                <NavLink style={{ marginRight: '10px' }} to="/patients"  >My Patients</NavLink>
+                
+                <Route exact path='/patients' render={() => <Patients />} /> 
+            </div>) 
+        }                   
     }
         
     

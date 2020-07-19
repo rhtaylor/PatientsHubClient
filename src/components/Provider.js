@@ -1,5 +1,12 @@
 import React, { Component } from 'react';
-import {v1 as uuid} from 'uuid' 
+import {v1 as uuid} from 'uuid'  
+import Patients from './Patients'  
+import { NavLink, Link } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Route
+} from 'react-router-dom';
+
  const Provider =({name, email, job})=>{  
      debugger
         return ( 
@@ -7,7 +14,9 @@ import {v1 as uuid} from 'uuid'
             
             <h1 key={uuid()}>{name}</h1>
             <h2 key={uuid()}>{email}</h2>
-            <h2 key={uuid()}>{job}</h2>
+            <h2 key={uuid()}>{job}</h2>  
+            <>
+           </>
         </div>)
 
         }
