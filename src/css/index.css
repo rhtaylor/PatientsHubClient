@@ -11,3 +11,12 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+ 
+h1{ 
+  font-family:  Times;
+} 
+
+
+.patientshub{
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

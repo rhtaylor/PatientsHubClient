@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import '../css/form.css'
 export default class NoteCard extends Component{
     state = { 
-        note: ''
+        note: '',  
+        provider_id: '', 
+        patient_id: ''
     } 
 
 
@@ -16,9 +18,8 @@ export default class NoteCard extends Component{
                 <textarea name="note" rows="10" cols="30"
                     onChange={this.handleChange}> </textarea>
                 <br />
-                <label>Password  </label>
-                <input type="password" name="password" placeholder="Enter password" value={this.state.password}
-                    onChange={(e) => this.handleChange(e)} />
+                <label>Electronic Signature  </label>
+    <input type="checkbox" id='provider_id' name="provider_id" value={this.state.provider_id} readonly></input>
                 <br />
                 <input type="submit" value="chart it or it didn't happen" />
             </form>

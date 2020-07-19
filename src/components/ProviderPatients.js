@@ -25,13 +25,18 @@ class ProviderPatients extends Component{
          debugger
             return <h4>{this.props.signed_in}</h4> }  
             
-        else    { debugger  
+        else if (this.props.myPatients.length > 0 && this.props.myPatients[0] === 'LOADING'){ 
+            return <h1>{this.props.myPatients[0]}</h1>} 
+        
+          else { debugger  
             return (<div> 
                 <br/>
-                <Provider name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}  /> 
+                <Provider id={this.props.signed_in[0].id} name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}  
+                    fetchMyPatients={this.props.fetchMyPatients}
+                /> 
                 <Router >
                 <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/patients`}  >My Patients</NavLink>
-                <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients {...routerProps}/>} /> 
+                    <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients  {...routerProps}/>} /> 
                                    
                 </Router>
             </div>) 
@@ -49,7 +54,8 @@ class ProviderPatients extends Component{
     }
 } 
  
-const mstp =(state)=>{
+const mstp =(state)=>{ 
+    debugger
     return{myPatients: state.providers.patients, 
            signed_in: state.providers.signed_in
     }

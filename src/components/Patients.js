@@ -1,6 +1,7 @@
 import React, { Component } from 'react'  
-import { connect } from 'react-redux';
-import {getPatients} from '../actions/actions' 
+import { connect } from 'react-redux'; 
+import {v1 as uuid} from 'uuid'
+import { getPatients, fetchMyPatients} from '../actions/actions' 
 import Patient from './Patient'  
 import { NavLink, Link } from 'react-router-dom';
 import {
@@ -11,20 +12,20 @@ import {
 
  class Patients extends Component{
     componentDidMount(){
-        this.props.getPatients(); 
-        debugger
+        if (this.props.patients.length === 0){ this.props.fetchMyPatients(this.props.location.pathname.match(/[1-9]/)[0]) }
+        
     }  
     
     makePatients = () =>{  
         debugger
         if (this.props.patients === "LOADING") {
-            return (<h1>{this.props.patients}</h1>)
+            return (<h1 key={uuid()}>{this.props.patients}</h1>)
         } else if (this.props.patients.length > 0 ) { return this.props.patients.map((p, i) =>{ 
             debugger
-          return (<div > 
+          return (<div key={uuid()} >  
               <Router>
               <Link style={{ marginRight: '10px' }} key={p.id + p.id} to={`${this.props.match.path}/${p.id}`} ><h1>{p.name}</h1></Link>
-            <Route exact path={`${this.props.match.path}/${p.id}`} render={(routerProps) => <Patient key={p.id} {...routerProps} patient={p} />} />
+            <Route exact path={`${this.props.match.path}/${p.id}`} render={(routerProps) => <Patient key={ uuid() } {...routerProps} patient={p} />} />
             
               </Router>
                   </div>) })   }
@@ -42,6 +43,10 @@ const mstp = (s) =>{
     return {patients: s.providers.patients}
 }
 const mdtp = (dispatch) =>{ 
-    return{getPatients: ()=> dispatch(getPatients())}
+    return{getPatients: ()=> dispatch(getPatients()), 
+        fetchMyPatients: (id)=> dispatch(fetchMyPatients(id))
+       
+    }
 }
-export default connect(mstp, mdtp)(Patients)
+export default connect(mstp, mdtp)(Patients) 
+

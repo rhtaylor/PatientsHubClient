@@ -7,19 +7,33 @@ import {
     Route
 } from 'react-router-dom';
 
- const Provider =({name, email, job})=>{  
-     debugger
+class Provider extends Component{ 
+    
+    constructor(props){
+        super(props) 
+
+    } 
+
+    handleClick=()=>{  
+        debugger
+        this.props.fetchMyPatients(this.props.id)
+
+    }
+
+     render(){
         return ( 
             <div key={uuid()} className="jumbotron"> 
             
-            <h1 key={uuid()}>{name}</h1>
-            <h2 key={uuid()}>{email}</h2>
-            <h2 key={uuid()}>{job}</h2>  
+            <h1 key={uuid()}>{this.props.name}</h1>
+            <h2 key={uuid()}>{this.props.email}</h2>
+            <h2 key={uuid()}>{this.props.job}</h2> 
+        
             <>
            </>
         </div>)
 
-        }
+        } 
+}
     
 
 
