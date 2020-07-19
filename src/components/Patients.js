@@ -25,7 +25,7 @@ import {
               <Router>
               <Link style={{ marginRight: '10px' }} key={p.id + p.id} to={`${this.props.match.path}/${p.id}`} ><h1>{p.name}</h1></Link>
             <Route exact path={`${this.props.match.path}/${p.id}`} render={(routerProps) => <Patient key={p.id} {...routerProps} patient={p} />} />
-            <Patient key={i} patient={p} />  
+            
               </Router>
                   </div>) })   }
   }
