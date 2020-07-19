@@ -31,7 +31,7 @@ class ProviderPatients extends Component{
                 <Provider name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}  /> 
                 <Router >
                 <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/patients`}  >My Patients</NavLink>
-                <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={() => <Patients />} /> 
+                <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients {...routerProps}/>} /> 
                                    
                 </Router>
             </div>) 
