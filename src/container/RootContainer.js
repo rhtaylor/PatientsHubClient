@@ -12,12 +12,7 @@ class RootContainer extends Component{
         }
     }  
     providerLoggedIn(){ 
-        debugger 
-        this.props.signed_in.map(pro => { 
-            this.setState(preS =>{ 
-                return Object.assign({}, preS, {signed_in: [...pro]} )
-            })
-        })
+       
     }
 
     pickProperComponent =()=>{ 

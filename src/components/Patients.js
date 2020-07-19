@@ -1,7 +1,7 @@
 import React, { Component } from 'react'  
 import { connect } from 'react-redux';
 import {getPatients} from '../actions/actions'  
-import Patients from './Patients'
+
 import Patient from './Patient' 
 import { Link } from 'react-router-dom';
  class Patients extends Component{

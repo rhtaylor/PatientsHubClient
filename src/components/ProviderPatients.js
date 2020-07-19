@@ -1,15 +1,33 @@
 import React, { Component } from 'react'  
-import {v1 as uuid} from 'uuid'
+import {v1 as uuid} from 'uuid' 
+import {fetchMyPatients} from '../actions/actions'
 import {connect} from 'react-redux'
+import Patients from '../components/Patients' 
+import Patient from '../components/Patient' 
+import Provider from './Provider'
+
 class ProviderPatients extends Component{
+    
+    proxyFetch({id}){  
+    if (this.props.myPatients[0] === 'LOADING'){ 
+         setTimeout(function(){ console.log('tick tick')}, 3000) } 
+    else { this.props.fetchMyPatients(id) }
+        
+    }
+
     dataDisplay =()=>{ 
         debugger
-        if (this.props.signed_in.length <= 1){
-        return <ul key={uuid()}>{this.props.signed_in.map(p =>{
-            debugger
-           return  <li key={uuid()}>{p.name || p}</li>  } ) }</ul>
+        if (this.props.signed_in && this.props.signed_in.length <= 1 && (this.props.signed_in[0] === 'LOADING')){ 
+         debugger
+            return <h4>{this.props.signed_in}</h4> }  
+            
+        else    { debugger  
+            return <div><br/><Provider name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}  /></div> 
         } 
     }
+        
+    
+    
     
     render(){ 
         debugger
@@ -23,5 +41,14 @@ const mstp =(state)=>{
     return{myPatients: state.providers.patients, 
            signed_in: state.providers.signed_in
     }
-}
-export default connect(mstp)(ProviderPatients)
+} 
+
+const mdtp =(dispatch)=>{
+    return { fetchMyPatients: (providerId) => dispatch(fetchMyPatients(providerId)) 
+    
+    }
+} 
+
+
+
+export default connect(mstp, mdtp)(ProviderPatients)
