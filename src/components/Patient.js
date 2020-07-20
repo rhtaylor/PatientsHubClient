@@ -19,7 +19,9 @@ class Patient extends Component{
         <h4 key={uuid()} className="initialism">Name: <i>{this.props.patient.name}</i></h4> 
         <h2 key={uuid()} >age: <i>{this.props.patient.age}</i></h2> 
         <h2 key={uuid()}>diagnosis: <i>{this.props.patient.diagnosis}</i></h2> 
-        <NoteCard addNoteCard={this.props.addNoteToCard} / >
+        <footer>
+        <NoteCard provider_id={this.props.provider_id} patient_id={this.props.patient_id} addNoteCard={this.props.addNoteToCard} / >
+        </footer>
         </div>
         )
     }
@@ -35,4 +37,4 @@ const mdtp =(dispatch)=>{
     }
 
 }
-export default connect(mstp, mdtp)(NoteCard)
+export default connect(mstp, mdtp)(Patient)

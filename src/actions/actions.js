@@ -110,7 +110,7 @@ export function addNoteCard(provider_id, patient_id, payload){
             method: "POST", headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify(payload)
+            }, body: JSON.stringify({note: payload})
         }).then(res => res.json()) 
         .then(data => dispatch({type: 'UPDATED', charts: data}))
             .catch(err => alert(err.response.data.message))

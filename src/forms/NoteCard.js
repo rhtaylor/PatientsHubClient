@@ -37,7 +37,7 @@ export default class NoteCard extends Component{
 
                 <label>Note  </label>
                 <textarea name="note" rows="10" cols="30"
-                    onChange={this.handleChange}> </textarea>
+                    onChange={this.handleChange} value={this.state.note}> </textarea>
                 <br />
                 <label>Electronic Signature  </label>
     <input type="checkbox" id='provider_id' name="provider_id" value={this.state.provider_id} readonly></input>
