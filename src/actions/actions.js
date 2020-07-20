@@ -127,9 +127,9 @@ export function signOut(id){
         method: "POST", headers: {
             'Accept': 'application/json',
             'Content-Type': 'application/json'
-        }, body: JSON.stringify(id) }) 
+        }, body: JSON.stringify({id: id}) }) 
     .then(res => res.json())
-      .then(data => dispatch({type: 'OUT', provider: data}) )
+      .then(data => dispatch({type: 'OUT', signed_out: data}) )
          .catch(err=> alert(err))     
         
 

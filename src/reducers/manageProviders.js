@@ -46,8 +46,9 @@ export default function manageProviders(state = {
         debugger
         return {...state }; 
         case 'OUT': 
-
-        return {...state, signed_in: state.signed_in.filter(p => p.id !== action.id) }
+        debugger
+        return {...state, signed_in: state.signed_in.filter(p => p.id !== action.signed_out.id) } 
+         
         default: 
         return state;
     }
