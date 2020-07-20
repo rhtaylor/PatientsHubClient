@@ -8,7 +8,9 @@ class SignOut extends Component{
         debugger 
         let id = this.props.providers.signed_in[0].id;  
         debugger
-        this.props.signOut(id)
+        this.props.signOut(id)  
+        debugger
+        this.props.history.push('/')
     }
 
     render(){
