@@ -10,8 +10,19 @@ import {
 } from 'react-router-dom';
  
 
- class Patients extends Component{
+ class Patients extends Component{ 
+     constructor(props){
+         super(props) 
+         this.state={
+            provider_id: '', 
+            patient_id: ''
+         }
+     }
     componentDidMount(){
+        debugger 
+        this.setState(preS =>{ 
+            return Object.assign({}, preS, {provider_id: this.props.location.pathname.match(/[1-9]/)[0] }) 
+        })
         if (this.props.patients.length === 0){ this.props.fetchMyPatients(this.props.location.pathname.match(/[1-9]/)[0]) }
         
     }  
@@ -25,7 +36,7 @@ import {
           return (<div key={uuid()} >  
               <Router>
               <Link style={{ marginRight: '10px' }} key={p.id + p.id} to={`${this.props.match.path}/${p.id}`} ><h1>{p.name}</h1></Link>
-            <Route exact path={`${this.props.match.path}/${p.id}`} render={(routerProps) => <Patient key={ uuid() } {...routerProps} patient={p} />} />
+            <Route exact path={`${this.props.match.path}/${p.id}`} render={(routerProps) => <Patient key={ uuid() } patient_id={p.id} provider_id={this.state.provider_id} {...routerProps} patient={p} />} />
             
               </Router>
                   </div>) })   }

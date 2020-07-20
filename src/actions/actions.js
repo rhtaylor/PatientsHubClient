@@ -103,17 +103,17 @@ export function fetchMyPatients(id){
           )  }
 }  
 
-export function addNoteToChart(provider_id, patient_id, payload){
+export function addNoteCard(provider_id, patient_id, payload){
     return (dispatch) =>{ dispatch({type: 'ADDING_NOTE', charts: "UPDATING"});  
         debugger
-        return fetch(`http:/localhost:3000/api/v1/providers/${provider_id}/patients/${patient_id}/virtual_charts`, {
+        return fetch(`http://localhost:3000/api/v1/providers/${provider_id}/${patient_id}/virtual_chart`, {
             method: "POST", headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             }, body: JSON.stringify(payload)
-        }).then(res => res.json) 
+        }).then(res => res.json()) 
         .then(data => dispatch({type: 'UPDATED', charts: data}))
-
+            .catch(err => alert(err.response.data.message))
         }
     
 }

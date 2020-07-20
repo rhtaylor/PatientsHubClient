@@ -1,16 +1,37 @@
 import React, { Component } from 'react' 
 import '../css/form.css'
 export default class NoteCard extends Component{
-    state = { 
+    constructor(props){
+        super(props)
+        this.state = { 
         note: '',  
         provider_id: '', 
         patient_id: ''
+    }  
+}
+
+    handleChange =(e)=>{
+        e.preventDefault() 
+        let saveE = e; 
+        this.setState({
+            note: saveE.target.value
+        }) 
+        
     } 
-
-
+    handleSubmit =(e)=>{
+        e.preventDefault() 
+        debugger 
+        let provider_num = this.props.provider_id 
+        let patient_num = this.props.patient_id.toString() 
+        debugger
+        this.props.addNoteCard(provider_num, patient_num, this.state.note) 
+        this.setState({note: '', patient_id: '', provider_id: ''})
+    }
     
     render(){ 
-        return (<div className="signIn">
+        debugger 
+        return (<div className="signIn"> 
+            
             <form className="signIn" onSubmit={(e) => this.handleSubmit(e)}>
 
 
