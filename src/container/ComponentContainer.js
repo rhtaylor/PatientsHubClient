@@ -32,7 +32,7 @@ class ComponentContainer extends Component{
                     
                         <div> 
                             
-                            <Route exact path="/" render={(routerProps)=> <NavBar {...routerProps} /> } />
+                            <Route path="/" render={(routerProps)=> <NavBar {...routerProps} /> } />
                             <Route exact path="/" render={() => <HomeComponent />} />
                             <Route exact path="/SignIn" render={(...routerProps) => <SignIn {...routerProps} signIn={this.props.signIn}/>} />
                             <Route exact path='/SignUp' render={()=> <SignUp /> } />  
