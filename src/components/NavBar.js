@@ -9,7 +9,7 @@ export default class NavBar extends Component{
             <div className="bar">
                 <NavLink style={{ marginRight: '10px' }} to="/SignIn"  >SignIn</NavLink>   
                 <NavLink style={{ marginRight: '10px' }} to="/SignUp"  >SignUp</NavLink>
-
+                <NavLink style={{ marginRight: '10px' }} to="/SignOut"  >SignOut</NavLink>
         </div>)
     }
 }

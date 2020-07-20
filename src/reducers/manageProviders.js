@@ -41,7 +41,13 @@ export default function manageProviders(state = {
         return {...state, patients: [action.patients]}; 
         case 'GOT_PROVIDER_PATIENTS':  
         debugger
-        return {...state, patients: action.patients}; 
+        return {...state, patients: action.patients};  
+        case 'SIGN_OUT':  
+        debugger
+        return {...state }; 
+        case 'OUT': 
+
+        return {...state, signed_in: state.signed_in.filter(p => p.id !== action.id) }
         default: 
         return state;
     }

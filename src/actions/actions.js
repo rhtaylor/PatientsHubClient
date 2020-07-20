@@ -116,4 +116,23 @@ export function addNoteCard(provider_id, patient_id, payload){
             .catch(err => alert(err.response.data.message))
         }
     
-}
+} 
+
+export function signOut(id){  
+    debugger
+    return (dispatch) => {  
+        dispatch({type: 'SIGN_OUT', provider: 'LOGGING_OUT'}) ; 
+        debugger
+        return fetch('http://localhost:3000/api/v1/providers/signout', { 
+        method: "POST", headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        }, body: JSON.stringify(id) }) 
+    .then(res => res.json())
+      .then(data => dispatch({type: 'OUT', provider: data}) )
+         .catch(err=> alert(err))     
+        
+
+    } }
+
+

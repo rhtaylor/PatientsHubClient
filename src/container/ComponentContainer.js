@@ -3,7 +3,8 @@ import {connect} from 'react-redux';
 import Forms from '../forms/Forms' 
 import ProviderPatients from '../components/ProviderPatients';  
 import RootContainer from '../container/RootContainer'  
-import HomeComponent from './HomeComponent'  
+import HomeComponent from './HomeComponent'
+import SignOut from '../components/SignOut'  
 
 import {signIn, fetchMyPatients} from '../actions/actions'
 import SignIn from '../forms/SignIn' 
@@ -35,6 +36,7 @@ class ComponentContainer extends Component{
                             <Route exact path="/SignIn" render={(...routerProps) => <SignIn {...routerProps} signIn={this.props.signIn}/>} />
                             <Route exact path='/SignUp' render={()=> <SignUp /> } />  
                             <Route exact path='/ProviderPatients' render={() => <ProviderPatients />} />
+                            <Route exact path='/SignOut' render={(routerProps) => <SignOut {...routerProps} />} />
                         </div>
                     
                 </header> 
