@@ -19,8 +19,8 @@ export default function PatientHubApp(){
         < div className="patientshubimg" /*"App" */ >
             <header className="App-header" > 
             <Router > 
-            <NavBar />  
-            <ComponentContainer /> 
+        `   <Route exact path="/" render={(routerProps) => <NavBar {...routerProps} />} />  
+            <ComponentContainer  /> 
             </Router>
             </header> 
         </div>

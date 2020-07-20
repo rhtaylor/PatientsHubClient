@@ -30,13 +30,15 @@ class ComponentContainer extends Component{
             <div className="patientshubimg" /*"App" */  >
                 <header className="App-header" >
                     
-                        <div>
-                            <NavBar />
+                        <div> 
+                            
+                            <Route exact path="/" render={(routerProps)=> <NavBar {...routerProps} /> } />
                             <Route exact path="/" render={() => <HomeComponent />} />
                             <Route exact path="/SignIn" render={(...routerProps) => <SignIn {...routerProps} signIn={this.props.signIn}/>} />
                             <Route exact path='/SignUp' render={()=> <SignUp /> } />  
                             <Route exact path='/ProviderPatients' render={() => <ProviderPatients />} />
                             <Route exact path='/SignOut' render={(routerProps) => <SignOut {...routerProps} />} />
+                           
                         </div>
                     
                 </header> 
