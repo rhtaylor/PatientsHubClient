@@ -11,7 +11,8 @@ export default class AddMyPatient extends Component {
     
     handleSubmit(e){
         e.preventDefault() 
-        debugger
+        this.props.addMyPatient(this.props.provider_id, this.state)
+
     }
 
     handleChange(e){

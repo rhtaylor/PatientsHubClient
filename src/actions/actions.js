@@ -1,4 +1,15 @@
+export function addMyPatient(provider_id, new_patient_info){
+    debugger 
+    return (dispatch) => {dispatch({type: 'ADD_NEW_PATIENT', payload: 'ADDING TO CHARTS'}); 
+        return fetch(`http://localhost:3000/api/v1/providers/${provider_id}/patients/create`, {
+            method: "POST", headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            }, body: JSON.stringify(new_patient_info)
+        }).then(res => res.json()).then(data => dispatch({ type: 'ADDED_PATIENT', patient: data }))
+            .catch(err => alert(err.response.data.message))
 
+    } }
 
 export function addProvider(action){   
     debugger

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'  
 import {v1 as uuid} from 'uuid' 
-import {fetchMyPatients} from '../actions/actions'
+import {fetchMyPatients, addMyPatient} from '../actions/actions'
 import {connect} from 'react-redux'
 import Patients from '../components/Patients' 
 import Patient from '../components/Patient'  
@@ -35,7 +35,7 @@ class ProviderPatients extends Component{
         else if (this.props.myPatients.length > 0 && this.props.myPatients[0] === 'LOADING'){ 
             return <h1>{this.props.myPatients[0]}</h1>} 
         
-          else {
+          else { debugger
             return (<div> 
                 <br/>
                 <Provider id={this.props.signed_in[0].id} name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}  
@@ -43,7 +43,8 @@ class ProviderPatients extends Component{
                 <Router > 
                     <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/NewPatient`} >Add a new patient's chart</NavLink>
                 <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/patients`}  >My Patients</NavLink>
-                    <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatient {...routerProps} />} />                
+                    <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatient  
+                        provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />                
  
                     <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients  {...routerProps}/>} /> 
                                    
@@ -72,8 +73,8 @@ const mstp =(state)=>{
 } 
 
 const mdtp =(dispatch)=>{
-    return { fetchMyPatients: (providerId) => dispatch(fetchMyPatients(providerId)) 
-    
+    return { fetchMyPatients: (providerId) => dispatch(fetchMyPatients(providerId)), 
+             addMyPatient: (provider_id, new_patient_info) => dispatch( addMyPatient(provider_id, new_patient_info) )
     }
 } 
 
