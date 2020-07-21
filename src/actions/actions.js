@@ -1,10 +1,10 @@
 
 
 export function addProvider(action){   
-    
+    debugger
     return (dispatch) => { 
-        dispatch({type: "ADDING_PROVIDERS", provider: 'UPLOADING'});  
-         
+        dispatch({type: "ADDING_PROVIDER", provider: 'UPLOADING'});  
+         debugger
         return fetch('http://localhost:3000/api/v1/providers/create', {
             method: "POST", headers: {
                 'Accept': 'application/json',

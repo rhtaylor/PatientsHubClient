@@ -29,8 +29,9 @@ class Form extends Component{
         e.preventDefault() 
         let addProvider = this.props  
         debugger
-        addProvider.addProvider(this.state)
-        
+        addProvider.addProvider(this.state) 
+        debugger
+        this.props.history.push('/ProviderPatients')
         
         
     }
@@ -72,7 +73,9 @@ const mdtp = (dispatch) => {
 }
 const mstp = (s) => { 
     debugger
-    return {s : s.providers}
+    return {providers : s.providers, 
+            
+        }
 }
 
 export default connect(mstp, mdtp)(Form)

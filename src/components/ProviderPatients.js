@@ -20,7 +20,13 @@ class ProviderPatients extends Component{
     }
 
     dataDisplay =()=>{ 
-        debugger
+        debugger 
+        if (this.props.providers === "UPLOADING"){ 
+        return <h4>{this.props.providers}</h4>
+        } else if (this.props.providers.length >= 1 ){
+           return this.props.providers.map(pro => <div><Provider {...pro} /></div>)
+        }
+
         if (this.props.signed_in && this.props.signed_in.length <= 1 && (this.props.signed_in[0] === 'LOADING')){ 
          debugger
             return <h4>{this.props.signed_in}</h4> }  
@@ -57,7 +63,8 @@ class ProviderPatients extends Component{
 const mstp =(state)=>{ 
     debugger
     return{myPatients: state.providers.patients, 
-           signed_in: state.providers.signed_in
+           signed_in: state.providers.signed_in, 
+           providers: state.providers.providers
     }
 } 
 

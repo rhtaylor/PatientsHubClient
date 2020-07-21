@@ -6,7 +6,7 @@ class SignOut extends Component{
 
     handleClick(){
         debugger 
-        let id = this.props.providers.signed_in[0].id;  
+        let id = this.props.providers.providers[0].id || this.props.providers.signed_in[0].id;  
         debugger
         this.props.signOut(id)  
         debugger

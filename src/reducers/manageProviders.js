@@ -6,10 +6,12 @@ export default function manageProviders(state = {
     let {type} = action
         debugger
     switch(type){
-        case "ADDING_PROVIDER":
+        case "ADDING_PROVIDER": 
+        debugger
         return {...state, providers: action.provider};  
-        case 'ADDED_PROVIDER': 
-        return {...state, providers: [...state.providers.concat(action.provider)]}; 
+        case 'ADDED_PROVIDER':  
+        debugger
+        return {...state, providers: [action.provider]}; 
         case 'FETCHING_PATIENTS': 
         return {...state, patients: action.patients }; 
         case 'ADD_PATIENTS': 
