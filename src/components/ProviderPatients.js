@@ -3,7 +3,8 @@ import {v1 as uuid} from 'uuid'
 import {fetchMyPatients} from '../actions/actions'
 import {connect} from 'react-redux'
 import Patients from '../components/Patients' 
-import Patient from '../components/Patient' 
+import Patient from '../components/Patient'  
+import AddMyPatient from '../forms/AddMyPatient'
 import Provider from './Provider'
 import { NavLink, Link } from 'react-router-dom';
 import {
@@ -34,14 +35,16 @@ class ProviderPatients extends Component{
         else if (this.props.myPatients.length > 0 && this.props.myPatients[0] === 'LOADING'){ 
             return <h1>{this.props.myPatients[0]}</h1>} 
         
-          else { debugger  
+          else {
             return (<div> 
                 <br/>
                 <Provider id={this.props.signed_in[0].id} name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}  
-                    fetchMyPatients={this.props.fetchMyPatients}
-                /> 
-                <Router >
+                    fetchMyPatients={this.props.fetchMyPatients}/> 
+                <Router > 
+                <NavLink style={{marginRight: '10px'  }} to={'providers/:id/NewPatient'} >Add this Patient's Chart</NavLink>
                 <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/patients`}  >My Patients</NavLink>
+                    <Route exact path={`/providers/${this.props.signed_in[0].id}`} render={(routerProps) => <AddMyPatient {...routerProps} />} />                
+ 
                     <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients  {...routerProps}/>} /> 
                                    
                 </Router>
