@@ -5,12 +5,15 @@ import {connect} from 'react-redux'
 import Patients from '../components/Patients' 
 import Patient from '../components/Patient'  
 import AddMyPatient from '../forms/AddMyPatient'
-import Provider from './Provider'
+import Provider from './Provider' 
+import VirtualCharts from '../container/VirtualCharts'
 import { NavLink, Link } from 'react-router-dom';
 import {
     BrowserRouter as Router,
     Route
 } from 'react-router-dom';
+
+
 class ProviderPatients extends Component{
     
     proxyFetch({id}){  
@@ -42,12 +45,14 @@ class ProviderPatients extends Component{
                     fetchMyPatients={this.props.fetchMyPatients}/> 
                 <Router > 
                     <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/NewPatient`} >Add a new patient's chart</NavLink>
-                <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/patients`}  >My Patients</NavLink>
+                    <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/patients`}  >My Patients</NavLink>
+                    <NavLink style={{ marginRight: '10px'}} to={`providers/${this.props.signed_in[0].id}/MyCharts`} >My Charts</NavLink>
                     <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatient  
                         provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />                
  
                     <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients  {...routerProps}/>} /> 
-                                   
+                    <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps} />} />
+
                 </Router>
             </div>) 
         }                   
@@ -72,7 +77,8 @@ const mstp =(state)=>{
     }
 } 
 
-const mdtp =(dispatch)=>{
+const mdtp =(dispatch)=>{ 
+    debugger
     return { fetchMyPatients: (providerId) => dispatch(fetchMyPatients(providerId)), 
              addMyPatient: (provider_id, new_patient_info) => dispatch( addMyPatient(provider_id, new_patient_info) )
     }

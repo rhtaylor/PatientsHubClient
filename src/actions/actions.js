@@ -1,3 +1,15 @@
+export function fetchMyCharts(provider_id){
+    return (dispatch) => {   
+        debugger
+        dispatch({type: 'GETTING_CHARTS', payload: 'LOADING'}); 
+        debugger
+        return fetch(`http://localhost:3000/api/v1/providers/${provider_id}/mycharts`) 
+        .then(res => res.json()) 
+        .then(data => dispatch({type: 'GOT_CHARTS', charts: data})) 
+        .catch(err => alert(err))
+
+}
+}
 export function addMyPatient(provider_id, new_patient_info){
     debugger 
     return (dispatch) => {dispatch({type: 'ADD_NEW_PATIENT', payload: 'ADDING TO CHARTS'}); 
