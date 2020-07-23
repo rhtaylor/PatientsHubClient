@@ -16,7 +16,19 @@ import {
 
 class ProviderPatients extends Component{
     
-    proxyFetch({id}){  
+    componentDidMount(){ 
+        debugger
+        if (this.props.myPatients.length === 0){    
+            debugger  
+            if(this.props.signed_in[0] !== 'LOADING'){ 
+                debugger
+            this.props.fetchMyPatients()
+                
+        } }
+    }
+
+    proxyFetch(id){   
+        debugger 
     if (this.props.myPatients[0] === 'LOADING'){ 
          setTimeout(function(){ console.log('tick tick')}, 3000) } 
     else { this.props.fetchMyPatients(id) }
@@ -38,7 +50,7 @@ class ProviderPatients extends Component{
         else if (this.props.myPatients.length > 0 && this.props.myPatients[0] === 'LOADING'){ 
             return <h1>{this.props.myPatients[0]}</h1>} 
         
-          else { debugger
+          else { 
             return (<div> 
                 <br/>
                 <Provider id={this.props.signed_in[0].id} name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}  

@@ -36,7 +36,7 @@ import {
           return (<div key={uuid()} >  
               <Router>
               <Link style={{ marginRight: '10px' }} key={p.id + p.id} to={`${this.props.match.path}/${p.id}`} ><h1>{p.name}</h1></Link>
-            <Route exact path={`${this.props.match.path}/${p.id}`} render={(routerProps) => <Patient key={ uuid() } patient_id={p.id} provider_id={this.state.provider_id} {...routerProps} patient={p} />} />
+            <Route exact path={`${this.props.match.path}/${p.id}`} render={(routerProps) => <Patient key={ uuid() } {...p} />} />
             
               </Router>
                   </div>) })   }
