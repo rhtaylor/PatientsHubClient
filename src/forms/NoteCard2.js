@@ -13,7 +13,9 @@ export default class NoteCard2 extends Component{
     handleChange =(e)=>{
         e.preventDefault() 
         let saveE = e; 
-        this.setState({
+        this.setState({ 
+            provider_id: this.props.provider_id, 
+            patient_id: this.props.patient_id,
             note: saveE.target.value
         }) 
         
@@ -34,7 +36,7 @@ export default class NoteCard2 extends Component{
         debugger 
         return (<div className="signIn"> 
             <label>Add Chart Note: </label>
-            <form className="signIn" onSubmit={(e) => this.handleSubmit(e)}>
+            <form className="signIn" onSubmit={(e) => this.props.handleSubmit2(this.props.provider_id, this.props.patient_id, this.state, e)}>
 
 
                 <label>Note  </label>

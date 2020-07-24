@@ -12,6 +12,12 @@ export default function manageProviders(state = {
         case 'ADDED_PROVIDER':  
         debugger
         return {...state, providers: [action.provider]}; 
+        case 'ADDING_PATIENT':
+        return { ...state, patients: [action.patients] } ;  
+        case 'ADDING_NEW_PATIENT': 
+        return {...state, patients: action.patient }
+        case 'ADDED_PATIENT': 
+        return {...state, patients: [action.patient]}  
         case 'FETCHING_PATIENTS': 
         return {...state, patients: action.patients }; 
         case 'ADD_PATIENTS': 

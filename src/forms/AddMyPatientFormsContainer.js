@@ -8,26 +8,38 @@ class AddMyPatientFormsContainer extends Component{
     componentDidMount(){
         debugger
     }
+    patientBack =()=>{ 
+        debugger
+        return this.props.patients.length === 0 ? <AddMyPatient provider_id={this.props.provider_id} handleSubmitFromAbove={this.handleSubmitFromAbove} /> 
+            : <NoteCard2 provider_id={this.props.provider_id} patient_id={this.props.patients[0].id} handleSubmit2={this.handleSubmit2} />
+
+         
+        
+        } 
+
 
     handleSubmitFromAbove=(provider_id, state, event)=>{
         debugger 
         event.preventDefault()
-      let x =  this.props.addMyPatient(this.props.provider_id, this.state)
-        debugger
-        this.props.history.goBack()
+      let x =  this.props.addMyPatient(provider_id, state)
+        
+      debugger
+        
     } 
-    handleSubmit2=()=>{
+    handleSubmit2=(pro_id, pat_id, payload, e)=>{
+        debugger 
+        e.preventDefault()  
+        this.props.addNoteCard(pro_id, pat_id, payload)
         debugger
     }
 
 
     render(){ 
-        debugger
+        
         return(
-            <div>
-                <AddMyPatient provider_id={this.props.provider_id} handleSubmitFromAbove={this.handleSubmitFromAbove} /> 
-                <NoteCard2 provider_id={this.props.provider_id} handleSubmit={this.handleSubmit2} />
-            </div>
+            <div> 
+                {this.patientBack()}    
+                </div>
         )
 
     }

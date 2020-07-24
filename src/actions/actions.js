@@ -12,7 +12,7 @@ export function fetchMyCharts(provider_id){
 }
 export function addMyPatient(provider_id, new_patient_info){
     debugger 
-    return (dispatch) => {dispatch({type: 'ADD_NEW_PATIENT', payload: 'ADDING TO CHARTS'}); 
+    return (dispatch) => {dispatch({type: 'ADD_NEW_PATIENT', payload: 'ADDING_PATIENT'}); 
         return fetch(`http://localhost:3000/api/v1/providers/${provider_id}/patients/create`, {
             method: "POST", headers: {
                 'Accept': 'application/json',
@@ -126,14 +126,15 @@ export function fetchMyPatients(id){
           )  }
 }  
 
-export function addNoteCard(provider_id, patient_id, payload){
+export function addNoteCard(provider_id, patient_id, payload){ 
+    debugger
     return (dispatch) =>{ dispatch({type: 'ADDING_NOTE', charts: "LOADING"});  
         debugger
         return fetch(`http://localhost:3000/api/v1/providers/${provider_id}/${patient_id}/virtual_chart`, {
             method: "POST", headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
-            }, body: JSON.stringify({note: payload})
+            }, body: JSON.stringify(payload)
         }).then(res => res.json()) 
         .then(data => dispatch({type: 'UPDATED', charts: data}))
             .catch(err => alert(err.response.data.message))
