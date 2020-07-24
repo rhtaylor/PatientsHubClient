@@ -23,7 +23,7 @@ class HomeComponent extends Component{
 
     render(){
         return(
-            < div className="patientshubimg" /*"App" */ >
+            < div className="patientshubimg"  >
                 <header className="App-header" > 
                 {this.componentGate()}
                 { (this.props.patients) ? <h1>{this.props.patients[0]}</h1>  : 

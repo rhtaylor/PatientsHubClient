@@ -6,8 +6,7 @@ export default class NavBar extends Component{
 
 
 
-    // this.props.location.pathname === '/SignIn'
-
+   
     render(){ 
         debugger
         return( 

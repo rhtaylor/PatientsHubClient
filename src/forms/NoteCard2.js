@@ -1,6 +1,6 @@
 import React, { Component } from 'react' 
 import '../css/form.css'
-export default class NoteCard extends Component{
+export default class NoteCard2 extends Component{
     constructor(props){
         super(props)
         this.state = { 
@@ -33,7 +33,7 @@ export default class NoteCard extends Component{
     render(){ 
         debugger 
         return (<div className="signIn"> 
-            
+            <label>Add Chart Note: </label>
             <form className="signIn" onSubmit={(e) => this.handleSubmit(e)}>
 
 

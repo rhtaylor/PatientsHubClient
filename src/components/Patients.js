@@ -36,7 +36,7 @@ import {
           return (<div key={uuid()} >  
               <Router>
               <Link style={{ marginRight: '10px' }} key={p.id + p.id} to={`${this.props.match.path}/${p.id}`} ><h1>{p.name}</h1></Link>
-            <Route exact path={`${this.props.match.path}/${p.id}`} render={(routerProps) => <Patient key={ uuid() } {...p} />} />
+            <Route exact path={`${this.props.match.path}/${p.id}`} render={(routerProps) => <Patient key={ uuid() } provider_id={this.props.signed_in[0].id} patient_id={p.id} {...p} />} />
             
               </Router>
                   </div>) })   }
@@ -51,7 +51,9 @@ import {
 } 
 const mstp = (s) =>{ 
     debugger
-    return {patients: s.providers.patients}
+    return {patients: s.providers.patients, 
+            signed_in: s.providers.signed_in
+    }
 }
 const mdtp = (dispatch) =>{ 
     return{getPatients: ()=> dispatch(getPatients()), 

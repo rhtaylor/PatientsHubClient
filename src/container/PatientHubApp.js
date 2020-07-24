@@ -16,10 +16,10 @@ import {
 export default function PatientHubApp(){ 
 
     return (
-        < div className="patientshubimg" /*"App" */ >
-            <header className="App-header" > 
+        < div className="patientshubimg"  >
+            <header className="App-header"> 
             <Router > 
-        `   <Route path="/" render={(routerProps) => <NavBar {...routerProps} />} />  
+            <Route path="/" render={(routerProps) => <NavBar {...routerProps} />} />  
             <ComponentContainer  /> 
             </Router>
             </header> 

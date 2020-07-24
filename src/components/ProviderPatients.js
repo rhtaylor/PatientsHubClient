@@ -6,6 +6,7 @@ import Patients from '../components/Patients'
 import Patient from '../components/Patient'  
 import AddMyPatient from '../forms/AddMyPatient'
 import Provider from './Provider' 
+import AddMyPatientFormsContainer from '../forms/AddMyPatientFormsContainer' 
 import VirtualCharts from '../container/VirtualCharts'
 import { NavLink, Link } from 'react-router-dom';
 import {
@@ -59,10 +60,10 @@ class ProviderPatients extends Component{
                     <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/NewPatient`} >Add a new patient's chart</NavLink>
                     <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/patients`}  >My Patients</NavLink>
                     <NavLink style={{ marginRight: '10px'}} to={`providers/${this.props.signed_in[0].id}/MyCharts`} >My Charts</NavLink>
-                    <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatient  
+                    <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatientFormsContainer  
                         provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />                
  
-                    <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients  {...routerProps}/>} /> 
+                    <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients provider_id={this.props.signed_in[0].id} {...routerProps}/>} /> 
                     <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps} />} />
 
                 </Router>

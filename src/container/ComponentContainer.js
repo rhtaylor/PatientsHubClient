@@ -27,7 +27,7 @@ class ComponentContainer extends Component{
         return(  
         
                 
-            <div className="patientshubimg" /*"App" */  >
+            <div className="patientshubimg"  >
                 <header className="App-header" >
                     
                         <div> 

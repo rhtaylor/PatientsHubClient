@@ -16,7 +16,8 @@ export default class Chart extends Component{
                   <p>{this.props.note}</p>
             <Router>
                 <Link style={{ marginRight: '10px' }} key={uuid()} to={`${this.props.match.path}/${this.props.provider_id}/patients/${this.props.patient_id}`} ><h1>patient: {this.props.patient_id}</h1></Link>
-                <Route exact path={`${this.props.match.path}/${this.props.provider_id}/patients/${this.props.patient_id}`} render={(routerProps) => <Patient key={uuid()} {...this.props.patients.filter(p => p.id === this.props.patient_id)[0]} />} />
+                <Route exact path={`${this.props.match.path}/${this.props.provider_id}/patients/${this.props.patient_id}`} render={(routerProps) => <Patient key={uuid()} {...this.props.patients.filter(p => p.id === this.props.patient_id)[0]} 
+                 patient_id={this.props.patient_id} provider_id={this.props.provider_id} {...routerProps} />} />
 
             </Router>
                 </div>)

@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import NoteCard2 from '../forms/NoteCard'
 
 export default class AddMyPatient extends Component {
     state = {
@@ -9,12 +10,12 @@ export default class AddMyPatient extends Component {
         diagnosis: ''
     }
     
-    handleSubmit(e){
-        e.preventDefault() 
-        this.props.addMyPatient(this.props.provider_id, this.state) 
-        debugger
-        this.props.history.push('/ProviderPatients')
-    }
+    // handleSubmit(e){
+    //     e.preventDefault() 
+    //     this.props.addMyPatient(this.props.provider_id, this.state) 
+    //     debugger
+    //     this.props.history.goBack()
+    // }
 
     handleChange(e){
         e.preventDefault()  
@@ -29,7 +30,8 @@ export default class AddMyPatient extends Component {
     
     render() { 
         debugger
-        return (<div className="signIn">
+        return (<div className="signIn"> 
+                <label>Add patient info: </label>
             <form className="signIn" onSubmit={(e) => this.handleSubmit(e)}>
                 <label>name </label>
                 <input type="text" id="name" name="name" value={this.state.name} onChange={(e) => this.handleChange(e)} />
@@ -46,8 +48,10 @@ export default class AddMyPatient extends Component {
                 <label>diagnosis</label>
                 <input type="text" id="diagnosis" value={this.state.diagnosis} onChange={(e) => this.handleChange(e)} />
                 <br />
-
-                <input type="submit" value="add patient" /*onClick={this.handleSubmit(this.state)}*/ />
+                <input type="submit" value="add patient" onClick={(event)=>this.props.handleSubmitFromAbove(this.props.provider_id, this.state, event)} />
+                <br/>
+                <br/>
+                {/* <NoteCard2 handleSubmit={this.handleSubmit} /> */}
             </form>
         </div>)
     }

@@ -4,6 +4,11 @@ import {v1 as uuid} from 'uuid'
 import {connect} from 'react-redux'
 import NoteCard from '../forms/NoteCard'
 import { addNoteCard, fetchMyPatients} from '../actions/actions'
+import { NavLink, Link } from 'react-router-dom';
+import {
+    BrowserRouter as Router,
+    Route
+} from 'react-router-dom';
 
 class Patient extends Component{
     constructor(props){
@@ -30,7 +35,10 @@ class Patient extends Component{
         <footer> 
            
         <div>{this.props.charts.charts ===  'UPDATING' ? <h1>Loading</h1> : null } </div>
-        <NoteCard provider_id={this.props.provider_id} patient_id={this.props.patient_id} addNoteCard={this.props.addNoteCard} / >
+                <Router>
+                <Link style={{ marginRight: '10px' }} key={uuid()} to={`${this.props.match.path}/${this.props.id}`} ><h1>Open Chart</h1></Link>
+                <Route exact path={`${this.props.match.path}/${this.props.id}`} render={(routerProps) => <NoteCard {...routerProps} provider_id={this.props.provider_id} patient_id={this.props.patient_id} addNoteCard={this.props.addNoteCard} /> } />
+                </Router>
         </footer> 
         
         </div>
