@@ -7,6 +7,7 @@ class AddMyPatientFormsContainer extends Component{
 
     componentDidMount(){
         debugger
+        this.props.updateStateBasedonURL(this.props.location.pathname)
     }
     patientBack =()=>{ 
         debugger 
@@ -32,15 +33,22 @@ class AddMyPatientFormsContainer extends Component{
         e.preventDefault()   
         debugger 
         payload.date = Date()
-        this.props.addNoteCard(pro_id, pat_id, payload)
+        this.props.addNoteCard(pro_id, pat_id[0].id , payload)
         this.props.history.push('/ProviderPatients')
     }
-
+    BackUp=()=>{
+        this.props.history.goBack()
+    }
 
     render(){ 
         
         return(
             <div> 
+                <button
+                    className="button icon-left" onClick={()=>this.BackUp()}>
+                    
+                    Back
+                    </button> 
                 {this.patientBack()}    
                 </div>
         )

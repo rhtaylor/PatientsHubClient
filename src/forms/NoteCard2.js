@@ -15,7 +15,7 @@ export default class NoteCard2 extends Component{
         let saveE = e; 
         this.setState({ 
             provider_id: this.props.provider_id, 
-            patient_id: this.props.patient_id,
+            patient_id: this.props.patient_id[0].id,
             note: saveE.target.value
         }) 
         

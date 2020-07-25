@@ -21,7 +21,7 @@ export default function manageProviders(state = {
         
         return {...state, new_admit: [action.patient]}; 
         case 'UPDATED':
-        return {...state, new_admit: [state.new_admit.filter(p => p.id !== action.charts.patient_id)] };
+        return {...state, new_admit: [] };
         case 'FETCHING_PATIENTS': 
         return {...state, patients: action.patients }; 
         case 'ADD_PATIENTS': 
