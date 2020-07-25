@@ -25,7 +25,8 @@ class ProviderPatients extends Component{
         this.setState({ currentURL: path })
     }
     componentDidUpdate(){
-        debugger
+        debugger 
+      
     }
     componentDidMount(){ 
         debugger

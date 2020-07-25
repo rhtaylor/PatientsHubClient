@@ -13,7 +13,7 @@ class AddMyPatientFormsContainer extends Component{
         debugger 
     
         return (this.props.new_admit.length === 0)  ? <AddMyPatient provider_id={this.props.provider_id} handleSubmitFromAbove={this.handleSubmitFromAbove} /> 
-            : <NoteCard2 provider_id={this.props.provider_id} patient_id={this.props.new_admit} handleSubmit2={this.handleSubmit2} />
+            : <NoteCard2 updateStateBasedonURL={this.props.updateStateBasedonURL} provider_id={this.props.provider_id} patient_id={this.props.new_admit} handleSubmit2={this.handleSubmit2} />
 
          
         
@@ -33,7 +33,8 @@ class AddMyPatientFormsContainer extends Component{
         e.preventDefault()   
         debugger 
         payload.date = Date()
-        this.props.addNoteCard(pro_id, pat_id[0].id , payload)
+        this.props.addNoteCard(pro_id, pat_id[0].id , payload) 
+        this.props.updateStateBasedonURL('/ProviderPatients')
         this.props.history.push('/ProviderPatients')
     }
     BackUp=()=>{
