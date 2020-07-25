@@ -9,9 +9,10 @@ class AddMyPatientFormsContainer extends Component{
         debugger
     }
     patientBack =()=>{ 
-        debugger
-        return this.props.patients.length === 0 ? <AddMyPatient provider_id={this.props.provider_id} handleSubmitFromAbove={this.handleSubmitFromAbove} /> 
-            : <NoteCard2 provider_id={this.props.provider_id} patient_id={this.props.patients[0].id} handleSubmit2={this.handleSubmit2} />
+        debugger 
+    
+        return (this.props.new_admit.length === 0)  ? <AddMyPatient provider_id={this.props.provider_id} handleSubmitFromAbove={this.handleSubmitFromAbove} /> 
+            : <NoteCard2 provider_id={this.props.provider_id} patient_id={this.props.new_admit} handleSubmit2={this.handleSubmit2} />
 
          
         
@@ -19,18 +20,20 @@ class AddMyPatientFormsContainer extends Component{
 
 
     handleSubmitFromAbove=(provider_id, state, event)=>{
-        debugger 
+         
         event.preventDefault()
-      let x =  this.props.addMyPatient(provider_id, state)
+        this.props.addMyPatient(provider_id, state)
         
-      debugger
+      
         
     } 
     handleSubmit2=(pro_id, pat_id, payload, e)=>{
         debugger 
-        e.preventDefault()  
+        e.preventDefault()   
+        debugger 
+        payload.date = Date()
         this.props.addNoteCard(pro_id, pat_id, payload)
-        debugger
+        this.props.history.push('/ProviderPatients')
     }
 
 
@@ -49,7 +52,8 @@ class AddMyPatientFormsContainer extends Component{
 
 const mstp =(state)=>{  
     debugger
-    return{patients: state.providers.patients, 
+    return{patients: state.providers.patients,  
+           new_admit: state.providers.new_admit,
            charts: state.charts
     }
 

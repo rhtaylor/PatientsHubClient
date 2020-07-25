@@ -1,7 +1,8 @@
 export default function manageProviders(state = {
     providers: [], 
     patients: [], 
-    signed_in: []
+    signed_in: [], 
+    new_admit: []
 }, action) {
     let {type} = action
         debugger
@@ -15,9 +16,12 @@ export default function manageProviders(state = {
         case 'ADDING_PATIENT':
         return { ...state, patients: [action.patients] } ;  
         case 'ADDING_NEW_PATIENT': 
-        return {...state, patients: action.patient }
-        case 'ADDED_PATIENT': 
-        return {...state, patients: [action.patient]}  
+        return {...state, new_admit: [action.patient] }
+        case 'ADDED_PATIENT':  
+        
+        return {...state, new_admit: [action.patient]}; 
+        case 'UPDATED':
+        return {...state, new_admit: [state.new_admit.filter(p => p.id !== action.charts.patient_id)] };
         case 'FETCHING_PATIENTS': 
         return {...state, patients: action.patients }; 
         case 'ADD_PATIENTS': 

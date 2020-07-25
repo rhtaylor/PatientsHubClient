@@ -29,7 +29,7 @@ export default class NoteCard2 extends Component{
         this.props.addNoteCard(provider_num, patient_num, this.state.note) 
         this.setState({note: '', patient_id: '', provider_id: ''})  
         debugger
-        this.props.history.goBack()
+        this.props.history.push('/ProviderPatients')
     }
     
     render(){ 
