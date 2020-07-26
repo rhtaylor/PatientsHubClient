@@ -4,7 +4,8 @@ export default class NoteCard extends Component{
     constructor(props){
         super(props)
         this.state = { 
-        note: '',  
+        note: '',
+        date: Date(),  
         provider_id: '', 
         patient_id: ''
     }  
@@ -22,12 +23,13 @@ export default class NoteCard extends Component{
         e.preventDefault() 
         debugger 
         let provider_num = this.props.provider_id 
-        let patient_num = this.props.patient_id.toString() 
+        let patient_num = this.props.patient_id.toString()  
+        
         debugger
-        this.props.addNoteCard(provider_num, patient_num, this.state.note) 
+        this.props.addNoteCard(provider_num, patient_num, this.state) 
         this.setState({note: '', patient_id: '', provider_id: ''})  
         debugger
-        this.props.history.goBack()
+        this.props.history.push('/ProviderPatients')
     }
     
     render(){ 

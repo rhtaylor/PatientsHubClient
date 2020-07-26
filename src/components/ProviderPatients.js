@@ -8,7 +8,8 @@ import AddMyPatient from '../forms/AddMyPatient'
 import Provider from './Provider' 
 import AddMyPatientFormsContainer from '../forms/AddMyPatientFormsContainer' 
 import VirtualCharts from '../container/VirtualCharts'
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link } from 'react-router-dom'; 
+import NavBar2 from './NavBar2'
 import {
     BrowserRouter as Router,
     Route
@@ -16,20 +17,33 @@ import {
 
 
 class ProviderPatients extends Component{ 
-    state = { 
+   
+        state = { 
         currentURL: ''
+    } 
+     
+     
+    syncState = ()=> {
+       return {currentURL: ''}
     }
- 
     updateStateBasedonURL=(path)=>{
-        debugger  
-        this.setState({ currentURL: path })
+        debugger   
+        let MOCKSTATE = path; 
+        
+        return MOCKSTATE
     }
     componentDidUpdate(){
-        debugger 
+        debugger  
+     this.state.currentURL !== 'ProviderPath' ? console.log("NOOOO") : console.log("Weird")
+    
+    }  
+
+   myCustomRoutGate(){
       
-    }
+   }
     componentDidMount(){ 
-        debugger
+        this.updateStateBasedonURL(this.props.location.pathname)
+        this.dataDisplay()
         if (this.props.myPatients.length === 0){    
             debugger  
             if(this.props.signed_in[0] !== 'LOADING'){ 
@@ -48,10 +62,38 @@ class ProviderPatients extends Component{
     }
 
     dataDisplay =()=>{ 
-        debugger 
-        if (this.props.providers === "UPLOADING"){ 
-        return <h4>{this.props.providers}</h4>
-        } else if (this.props.providers.length >= 1 ){
+        debugger  
+        if (this.updateStateBasedonURL(this.props.location.pathname) === '/providers/1/NewPatient'){
+            return(<div> 
+                <Provider id={this.props.signed_in[0].id} name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}
+                    fetchMyPatients={this.props.fetchMyPatients} /> 
+                <Router > 
+                <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatientFormsContainer
+                    syncState={this.syncState} updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />
+                </Router>
+            </div>)
+        }      
+        else if (this.updateStateBasedonURL(this.props.location.pathname) === '/ProviderPatients'){  
+             return (<div>
+                <br />
+                <Provider id={this.props.signed_in[0].id} name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}
+                    fetchMyPatients={this.props.fetchMyPatients} />
+                <Router >
+                <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/NewPatient`} >Add a new patient's chart</NavLink>
+                <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/patients`}  >My Patients</NavLink>
+                <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/MyCharts`} >My Charts</NavLink>
+                <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatientFormsContainer
+                   syncState={this.syncState} updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />
+                <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients provider_id={this.props.signed_in[0].id} {...routerProps} />} />
+                <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps} />} />
+                </Router>
+            </div>)
+        
+          }  
+          else if (this.props.providers === "UPLOADING") {
+            return <h4>{this.props.providers}</h4>
+        }
+        else if (this.props.providers.length >= 1 ){
            return this.props.providers.map(pro => <div><Provider {...pro} /></div>)
         }
 
@@ -61,7 +103,7 @@ class ProviderPatients extends Component{
             
         else if (this.props.myPatients.length > 0 && this.props.myPatients[0] === 'LOADING'){ 
             return <h1>{this.props.myPatients[0]}</h1>} 
-        else if (this.state.currentURL === '/providers/1/NewPatient'){ 
+        else if (this.updateStateBasedonURL(this.props.location.pathname) === '/providers/1/NewPatient'){ 
                 return(<div ><Provider id={this.props.signed_in[0].id} name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}
                 fetchMyPatients={this.props.fetchMyPatients} />
                 <Router >
@@ -71,9 +113,14 @@ class ProviderPatients extends Component{
                 </div>)
         }
         
-        else if (this.props.location.pathname === `/providers/${this.props.signed_in[0].id}/NewPatient`) { 
+        else if (this.state.currentURL === `/providers/${this.props.signed_in[0].id}/MyCharts`) { 
           return ( <div ><Provider id={this.props.signed_in[0].id} name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}
-                fetchMyPatients={this.props.fetchMyPatients} /></div>
+                fetchMyPatients={this.props.fetchMyPatients} /> 
+                    <Router >
+                  <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps}
+                  updateStateBasedonURL={this.updateStateBasedonURL} />} />
+                    </Router >
+                </div>
            ) } else if((this.props.location.pathname === '/ProviderPatients')){
             return (<div>
                 <br />
@@ -87,17 +134,36 @@ class ProviderPatients extends Component{
                         </div>)}
 
                     <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatientFormsContainer
-                        updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />
+                       syncState={this.syncState} updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />
 
                     <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients provider_id={this.props.signed_in[0].id} {...routerProps} />} />
-                    <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps} />} />
+                    <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps}  
+                        updateStateBasedonURL={this.updateStateBasedonURL} />} />
 
                 </Router>
-            </div>) 
+            </div>)}  
+            else if (this.props.location.pathname === '/ProviderPatients') {
+                return (<div>
+                    <br />
+                    <Provider id={this.props.signed_in[0].id} name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}
+                        fetchMyPatients={this.props.fetchMyPatients} />
+                    <Router >
+                        <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/NewPatient`} >Add a new patient's chart</NavLink>
+                        <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/patients`}  >My Patients</NavLink>
+                        <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/MyCharts`} >My Charts</NavLink>
+                        <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatientFormsContainer
+                            updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />
+                        <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients provider_id={this.props.signed_in[0].id} {...routerProps} />} />
+                        <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps} />} />
+                    </Router>
+                </div>)
+
+            
         } else {
             
             return (<div> 
-                <br/>
+                <br/> 
+                <h1>or is it down here?</h1>
                 <Provider id={this.props.signed_in[0].id} name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}  
                     fetchMyPatients={this.props.fetchMyPatients}/> 
                                                
@@ -115,8 +181,8 @@ class ProviderPatients extends Component{
 
                
             </div>) 
-        }                   
-    }
+         }                   
+         }
         
     
     

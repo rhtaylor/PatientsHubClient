@@ -11,13 +11,17 @@ import {
 } from 'react-router-dom';
 class VirtualCharts extends Component{
     
-    componentDidMount =()=>{ 
+    componentDidMount =()=>{  
+        debugger
+        this.props.updateStateBasedonURL(this.props.location.pathname);  
         this.props.fetchMyCharts(this.props.provider_id); 
         this.props.fetchMyPatients(this.props.provider_id)
     }
     
     displayCharts =()=>{ 
-        debugger
+        debugger 
+       
+
          if (this.props.charts === 'LOADING'){ 
          return <h1>{this.props.charts}</h1> } 
          else if (this.props.charts.length > 0){  
@@ -30,10 +34,23 @@ class VirtualCharts extends Component{
                      </Router>
                  </div>)}) 
          }
+    } 
+    BackUp = () => { 
+        debugger
+        
+        this.props.history.goBack()
     }
     
     render(){
-    return(<div>{this.displayCharts()}</div>)
+    return(<div> 
+        
+            <button
+                className="button icon-left" onClick={() => this.BackUp()}>
+
+                Back
+                    </button> 
+        {this.displayCharts()}
+        </div>)
     } 
 
 }  
