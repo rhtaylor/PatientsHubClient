@@ -13,7 +13,7 @@ class VirtualCharts extends Component{
     
     componentDidMount =()=>{  
         debugger
-          
+        this.props.updateStateBasedonURL(this.props.location.pathname);  
         this.props.fetchMyCharts(this.props.provider_id); 
         this.props.fetchMyPatients(this.props.provider_id)
     }

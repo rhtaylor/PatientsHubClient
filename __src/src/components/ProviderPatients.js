@@ -1,4 +1,4 @@
-import React, { Component, useCallback } from 'react'  
+import React, { Component } from 'react'  
 import {v1 as uuid} from 'uuid' 
 import {fetchMyPatients, addMyPatient} from '../actions/actions'
 import {connect} from 'react-redux'
@@ -22,11 +22,15 @@ class ProviderPatients extends Component{
     } 
      
      
+    syncState = ()=> {
+       return {currentURL: ''}
+    }
     updateStateBasedonURL=(path)=>{
-        let MOCKSTATE = path  
-      return MOCKSTATE      
-    } 
-
+        debugger   
+        let MOCKSTATE = path; 
+        
+        return MOCKSTATE
+    }
     componentDidUpdate(){
         debugger  
      this.state.currentURL !== 'ProviderPath' ? console.log("NOOOO") : console.log("Weird")
@@ -43,7 +47,7 @@ class ProviderPatients extends Component{
             debugger  
             if(this.props.signed_in[0] !== 'LOADING'){ 
                 debugger
-                this.props.fetchMyPatients(this.props.signed_in[0].id)
+            this.props.fetchMyPatients()
                 
         } }
     }
@@ -74,11 +78,12 @@ class ProviderPatients extends Component{
                 <Provider id={this.props.signed_in[0].id} name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}
                     fetchMyPatients={this.props.fetchMyPatients} />
                 <Router >
-                
+                <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/NewPatient`} >Add a new patient's chart</NavLink>
                 <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/patients`}  >My Patients</NavLink>
                 <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/MyCharts`} >My Charts</NavLink>
-                
-                <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients provider_id={this.props.signed_in[0].id} updateStateBasedonURL={this.updateStateBasedonURL} {...routerProps} />} />
+                <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatientFormsContainer
+                   syncState={this.syncState} updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />
+                <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients provider_id={this.props.signed_in[0].id} {...routerProps} />} />
                 <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps} />} />
                 </Router>
             </div>)
@@ -130,7 +135,7 @@ class ProviderPatients extends Component{
                     <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatientFormsContainer
                        syncState={this.syncState} updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />
 
-                    <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} {...routerProps} />} />
+                    <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients provider_id={this.props.signed_in[0].id} {...routerProps} />} />
                     <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps}  
                         updateStateBasedonURL={this.updateStateBasedonURL} />} />
 
@@ -147,7 +152,7 @@ class ProviderPatients extends Component{
                         <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/MyCharts`} >My Charts</NavLink>
                         <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatientFormsContainer
                             updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />
-                        <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} {...routerProps} />} />
+                        <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients provider_id={this.props.signed_in[0].id} {...routerProps} />} />
                         <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps} />} />
                     </Router>
                 </div>)
@@ -177,20 +182,14 @@ class ProviderPatients extends Component{
             </div>) 
          }                   
          }
-        back=()=>{ 
-            debugger
-            this.props.history.goBack()
-        }
+        
     
     
     
     render(){ 
         debugger
         return(<div> 
-            {this.props.myPatients.length > 0 ? <button onClick={() => this.back()}>Back
-        </button> : null} 
-            {this.dataDisplay()} 
-           
+            {this.dataDisplay()}
         </div>)
     }
 } 

@@ -36,7 +36,7 @@ class ComponentContainer extends Component{
                             <Route exact path="/" render={() => <HomeComponent />} />
                             <Route exact path="/SignIn" render={(...routerProps) => <SignIn {...routerProps} signIn={this.props.signIn}/>} />
                             <Route exact path='/SignUp' render={(routerProps)=> <SignUp {...routerProps} /> } />  
-                           
+                            <Route exact path='/ProviderPatients' render={(routerProps) => <ProviderPatients {...routerProps} />} />
                             <Route exact path='/SignOut' render={(routerProps) => <SignOut {...routerProps} />} />
                            
                         </div>

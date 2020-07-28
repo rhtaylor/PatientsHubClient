@@ -33,13 +33,13 @@ class AddMyPatientFormsContainer extends Component{
         debugger 
         payload.date = Date()
         this.props.addNoteCard(pro_id, pat_id[0].id , payload) 
+        this.props.updateStateBasedonURL('/ProviderPatients') 
         
-        
-        this.props.history.goBack()
+        this.props.history.push('/ProviderPatients')
     }
     BackUp=()=>{  
         debugger
-        
+        this.props.updateStateBasedonURL('/ProviderPatients') 
         this.props.history.goBack()
     }
 

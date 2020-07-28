@@ -1,0 +1,11 @@
+.about{
+     background-color: rgb(180, 180, 233); 
+     width: auto;
+     height: 500px;
+}
+p{
+    opacity: 10;
+    font-size: large; 
+    font-style: italic; 
+    font: outline;
+}
