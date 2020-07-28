@@ -14,7 +14,9 @@ export default class NoteCard extends Component{
     handleChange =(e)=>{
         e.preventDefault() 
         let saveE = e; 
-        this.setState({
+        this.setState({ 
+            provider_id: this.props.provider_id, 
+            patient_id: this.props.patient_id,
             note: saveE.target.value
         }) 
         
@@ -29,7 +31,7 @@ export default class NoteCard extends Component{
         this.props.addNoteCard(provider_num, patient_num, this.state) 
         this.setState({note: '', patient_id: '', provider_id: ''})  
         debugger
-        this.props.history.push('/ProviderPatients')
+        this.props.history.goBack()
     }
     
     render(){ 

@@ -26,7 +26,7 @@ class NavBar extends Component{
                 <NavLink style={{ marginRight: '10px' }} to="/SignUp"  >SignUp</NavLink></div> 
                     : this.props.location.pathname === '/ProviderPatients' || this.props.location.pathname === "/providers/1/NewPatient" || this.props.location.pathname === '/Patients' ?
                 <div>
-                <NavLink style={{marginRight: '10px'}} to='/Patients'>Patients</NavLink>
+                <NavLink style={{marginRight: '10px'}} to='/Patients'>My Patients</NavLink>
                         <Route exact path='/Patients' render={(routerProps) => <PatientsMaker {...routerProps} />} /> 
 
                 <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/NewPatient`} >Add a new patient's chart</NavLink>

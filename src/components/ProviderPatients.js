@@ -75,10 +75,10 @@ class ProviderPatients extends Component{
                     fetchMyPatients={this.props.fetchMyPatients} />
                 <Router >
                 
-                <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/patients`}  >My Patients</NavLink>
+             
                 <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/MyCharts`} >My Charts</NavLink>
                 
-                <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients provider_id={this.props.signed_in[0].id} updateStateBasedonURL={this.updateStateBasedonURL} {...routerProps} />} />
+                
                 <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps} />} />
                 </Router>
             </div>)
@@ -123,14 +123,14 @@ class ProviderPatients extends Component{
                 <Router >
                     {(this.props.location.pathname === `/providers/${this.props.signed_in[0].id}/NewPatient`) ? null :
                         (<div><NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/NewPatient`} >Add a new patient's chart</NavLink>
-                            <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/patients`}  >My Patients</NavLink>
+                           
                             <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/MyCharts`} >My Charts</NavLink>
                         </div>)}
 
                     <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatientFormsContainer
                        syncState={this.syncState} updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />
 
-                    <Route exact path={`/providers/${this.props.signed_in[0].id}/patients`} render={(routerProps) => <Patients updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} {...routerProps} />} />
+                    
                     <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps}  
                         updateStateBasedonURL={this.updateStateBasedonURL} />} />
 
