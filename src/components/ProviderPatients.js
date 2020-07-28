@@ -74,13 +74,7 @@ class ProviderPatients extends Component{
                 <Provider id={this.props.signed_in[0].id} name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}
                     fetchMyPatients={this.props.fetchMyPatients} />
                 <Router >
-                
-             
-                <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/MyCharts`} >My Charts</NavLink>
-                
-                
-                <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps} />} />
-                </Router>
+          </Router>
             </div>)
         
           }  
