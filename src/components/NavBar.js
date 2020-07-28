@@ -30,7 +30,8 @@ class NavBar extends Component{
                 <div> 
                                 
                 <Route exact path='/ProviderPatients' render={(routerProps) => <ProviderPatients {...routerProps} />} />
-
+                                
+                               
                 <NavLink style={{ marginRight: '10px' }} to="/SignOut"  >SignOut</NavLink>
                 
                 <NavLink style={{ marginRight: '10px' }} to='/Patients'>My Patients</NavLink>
@@ -45,36 +46,41 @@ class NavBar extends Component{
                 
                 </div>
                 : this.props.location.pathname === `/providers/${this.props.signed_in[0].id}/NewPatient` ?  
-                      <div> 
+                      <div>  
+                                    <NavLink style={{ marginRight: '10px' }} to='/ProviderPatients'>Home</NavLink>
+                                    <Route exact path='/ProviderPatients' render={(routerProps) => <ProviderPatients {...routerProps} />} />
                             <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/NewPatient`} >Add a new patient's chart</NavLink>
                             <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatientFormsContainer
                                 syncState={this.syncState} updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />
                     </div> 
 
                     :   this.props.location.pathname === '/Patients' ?
-                <div> 
-                <NavLink style={{marginRight: '10px'}} to='/Patients'>My Patients</NavLink>
-                <Route exact path='/Patients' render={(routerProps) => <PatientsMaker {...routerProps} />} /> 
+                <div>  
                                         <NavLink style={{ marginRight: '10px' }} to='/ProviderPatients'>Home</NavLink>
                                         <Route exact path='/ProviderPatients' render={(routerProps) => <ProviderPatients {...routerProps} />} />
+                <NavLink style={{marginRight: '10px'}} to='/Patients'>My Patients</NavLink>
+                <Route exact path='/Patients' render={(routerProps) => <PatientsMaker {...routerProps} />} /> 
+                                        
                 
                 </div> 
                                 : this.props.location.pathname === `providers/${this.props.signed_in[0].id}/NewPatient` ?
                 
-                <div>
+                <div> 
+                                            <NavLink style={{ marginRight: '10px' }} to='/ProviderPatients'>Home</NavLink>
+                                            <Route exact path='/ProviderPatients' render={(routerProps) => <ProviderPatients {...routerProps} />} />
                 <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/NewPatient`} >Add a new patient's chart</NavLink>
                             <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatientFormsContainer
                                 syncState={this.syncState} updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />
-                                            <NavLink style={{ marginRight: '10px' }} to='/ProviderPatients'>Home</NavLink>
-                                            <Route exact path='/ProviderPatients' render={(routerProps) => <ProviderPatients {...routerProps} />} />
+                                            
                
                 </div> 
                                     : this.props.location.pathname === `/providers/${this.props.signed_in[0].id}/MyCharts` ? 
                 <div>
-                <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/MyCharts`} >My Charts</NavLink>
-                <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps} />} />
                                                 <NavLink style={{ marginRight: '10px' }} to='/ProviderPatients'>Home</NavLink>
                                                 <Route exact path='/ProviderPatients' render={(routerProps) => <ProviderPatients {...routerProps} />} />
+                <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/MyCharts`} >My Charts</NavLink>
+                <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps} />} />
+                                                
                 </div>
                 : null
              }

@@ -35,20 +35,12 @@ class VirtualCharts extends Component{
                  </div>)}) 
          }
     } 
-    BackUp = () => { 
-        debugger
-        
-        this.props.history.goBack()
-    }
+   
     
     render(){
     return(<div> 
         
-            <button
-                className="button icon-left" onClick={() => this.BackUp()}>
-
-                Back
-                    </button> 
+           
         {this.displayCharts()}
         </div>)
     } 

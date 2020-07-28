@@ -36,7 +36,7 @@ class Patient extends Component{
            
         <div>{this.props.charts.charts ===  'UPDATING' ? <h1>Loading</h1> : null } </div>
                 <Router>
-                <Link style={{ marginRight: '10px' }} key={uuid()} to={`${this.props.match.path}/${this.props.id}`} ><h1>Open Chart</h1></Link>
+                <Link style={{ marginRight: '10px' }} key={uuid()} to={`${this.props.match.path}/${this.props.id}`} ><h1>Chart on Patient</h1></Link>
                 <Route exact path={`${this.props.match.path}/${this.props.id}`} render={(routerProps) => <NoteCard {...routerProps} provider_id={this.props.provider_id} patient_id={this.props.patient_id} addNoteCard={this.props.addNoteCard} /> } />
                 </Router>
         </footer> 

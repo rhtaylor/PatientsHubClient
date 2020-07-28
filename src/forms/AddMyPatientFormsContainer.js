@@ -10,7 +10,7 @@ class AddMyPatientFormsContainer extends Component{
     }
     patientBack =()=>{ 
         debugger 
-    
+    if (this.props.charts.charts === 'LOADING'){ return <h1>{this.props.charts.charts}</h1>}
         return (this.props.new_admit.length === 0)  ? <AddMyPatient provider_id={this.props.provider_id} handleSubmitFromAbove={this.handleSubmitFromAbove} /> 
             : <NoteCard2 updateStateBasedonURL={this.props.updateStateBasedonURL} provider_id={this.props.provider_id} patient_id={this.props.new_admit} handleSubmit2={this.handleSubmit2} />
 
@@ -37,21 +37,12 @@ class AddMyPatientFormsContainer extends Component{
         
         this.props.history.goBack()
     }
-    BackUp=()=>{  
-        debugger
-        
-        this.props.history.goBack()
-    }
+   
 
     render(){ 
-        
+        debugger
         return(
-            <div> 
-                <button
-                    className="button icon-left" onClick={()=>this.BackUp()}>
-                    
-                    Back
-                    </button> 
+                <div>
                 {this.patientBack()}    
                 </div>
         )
