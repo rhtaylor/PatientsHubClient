@@ -59,14 +59,15 @@ class ProviderPatients extends Component{
     dataDisplay =()=>{ 
         debugger  
         if (this.updateStateBasedonURL(this.props.location.pathname) === '/providers/1/NewPatient'){
-            return(<div> 
+            if (this.props.signed_in === 'LOADING'){ return <h1>{this.props.signed_in}</h1>} else {
+             return(<div> 
                 <Provider id={this.props.signed_in[0].id} name={this.props.signed_in[0].name} job={this.props.signed_in[0].job} email={this.props.signed_in[0].email}
                     fetchMyPatients={this.props.fetchMyPatients} /> 
                 <Router > 
                 <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatientFormsContainer
                     syncState={this.syncState} updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />
                 </Router>
-            </div>)
+            </div>) }
         }      
         else if (this.updateStateBasedonURL(this.props.location.pathname) === '/ProviderPatients'){  
              return (<div>
@@ -181,8 +182,7 @@ class ProviderPatients extends Component{
     render(){ 
         debugger
         return(<div> 
-            {this.props.myPatients.length > 0 ? <button onClick={() => this.back()}>Back
-        </button> : null} 
+          
             {this.dataDisplay()} 
            
         </div>)

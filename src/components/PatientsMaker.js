@@ -11,13 +11,15 @@ class PatientsMaker extends Component{
         } else if (this.props.patients.length === 1 && this.props.patients[0] === 'LOADING'){
             return <h1>{this.props.patients}</h1> 
         } else {
-          return  this.props.patients.map(p => <div key={uuid()} ><Patient provider_id={this.props.signed_in[0].id} patient_id={p.id} match={this.props.match} location={this.props.location} histroy={this.props.histroy} key={uuid()} {...p} /></div>)
+          return  this.props.patients.map(p => <div key={uuid()} ><Patient back={this.back} provider_id={this.props.signed_in[0].id} patient_id={p.id} match={this.props.match} location={this.props.location} histroy={this.props.histroy} key={uuid()} {...p} /></div>)
         } 
             
     }
-    back = () => {
+    back = (e) => { 
+        //depreciated for home NavLink
+            e.preventDefault()
         debugger
-
+    
         this.props.history.goBack()
     }
 
@@ -25,8 +27,7 @@ class PatientsMaker extends Component{
     render(){ 
         debugger
         return (<div>
-            {this.props.patients.length > 0 ? <button onClick={() => this.back()}>Back
-        </button> : null} 
+            
                 {this.makeMyPatients()}
             </div>
         )

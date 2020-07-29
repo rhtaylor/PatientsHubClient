@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'; 
+import SignUp from '../forms/SignUp'
 import { NavLink } from 'react-router-dom';
 import '../css/NavBar.css' 
 import {connect} from 'react-redux'
@@ -23,9 +24,16 @@ class NavBar extends Component{
                 {  (this.props.location.pathname === '/') ?   
                 
                      <div> <NavLink style={{ marginRight: '10px' }} to="/SignIn"  >SignIn</NavLink>
-                <NavLink style={{ marginRight: '10px' }} to="/SignUp"  >SignUp</NavLink></div> 
+                    <NavLink style={{ marginRight: '10px' }} to="/SignUp"  >SignUp</NavLink>  
+                    
+                    </div>
                     : this.props.location.pathname === '/SignIn' ? 
-                        <NavLink style={{ marginRight: '10px' }} to="/SignIn"  >SignIn</NavLink>
+                        <NavLink style={{ marginRight: '10px' }} to="/SignIn"  >SignIn</NavLink> 
+                    : this.props.location.pathname === '/SignUp' ? 
+                        <div>
+                                
+                            
+                        </div>
                     : this.props.location.pathname === '/ProviderPatients' ? 
                 <div> 
                                 

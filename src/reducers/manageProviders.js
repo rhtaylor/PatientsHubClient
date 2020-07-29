@@ -9,10 +9,10 @@ export default function manageProviders(state = {
     switch(type){
         case "ADDING_PROVIDER": 
         debugger
-        return {...state, providers: action.provider};  
+        return {...state, signed_in: [action.provider] };  
         case 'ADDED_PROVIDER':  
         debugger
-        return {...state, providers: [action.provider]}; 
+        return {...state, signed_in: [action.provider]}; 
         case 'ADDING_PATIENT':
         return { ...state, patients: [action.patients] } ;  
         case 'ADDING_NEW_PATIENT': 
@@ -55,8 +55,8 @@ export default function manageProviders(state = {
         debugger
         return {...state, patients: action.patients};  
         case 'SIGN_OUT':  
-        debugger
-        return {...state }; 
+            debugger          
+        return {providers: [], patients: [], signed_in: [], new_admit: [] }; 
         case 'OUT': 
         debugger
         return {...state, signed_in: state.signed_in.filter(p => p.id !== action.signed_out.id) } 

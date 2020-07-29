@@ -33,7 +33,7 @@ class Patient extends Component{
         <h2 key={uuid()} >age: <i>{this.props.age}</i></h2> 
         <h2 key={uuid()}>diagnosis: <i>{this.props.diagnosis}</i></h2> 
         <footer> 
-           
+        
         <div>{this.props.charts.charts ===  'UPDATING' ? <h1>Loading</h1> : null } </div>
                 <Router>
                 <Link style={{ marginRight: '10px' }} key={uuid()} to={`${this.props.match.path}/${this.props.id}`} ><h1>Chart on Patient</h1></Link>
