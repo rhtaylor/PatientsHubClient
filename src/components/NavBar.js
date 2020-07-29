@@ -21,6 +21,7 @@ class NavBar extends Component{
         debugger
         return( 
                 <div className="bar"> 
+                   
                 {  (this.props.location.pathname === '/') ?   
                 
                      <div> <NavLink style={{ marginRight: '10px' }} to="/SignIn"  >SignIn</NavLink>
@@ -40,7 +41,7 @@ class NavBar extends Component{
                 <Route exact path='/ProviderPatients' render={(routerProps) => <ProviderPatients {...routerProps} />} />
                                 
                                
-                <NavLink style={{ marginRight: '10px' }} to="/SignOut"  >SignOut</NavLink>
+                                    <NavLink style={{ marginRight: '10px' }} to="/SignOut" >SignOut</NavLink>
                 
                 <NavLink style={{ marginRight: '10px' }} to='/Patients'>My Patients</NavLink>
                                 <Route exact path='/Patients' render={(routerProps) => <PatientsMaker {...routerProps} />} /> 

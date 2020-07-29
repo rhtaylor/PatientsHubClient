@@ -5,7 +5,8 @@ import {connect} from 'react-redux'
 import Patients from '../components/Patients' 
 import Patient from '../components/Patient'  
 import AddMyPatient from '../forms/AddMyPatient'
-import Provider from './Provider' 
+import Provider from './Provider'  
+import '../css/Errors.css'
 import AddMyPatientFormsContainer from '../forms/AddMyPatientFormsContainer' 
 import VirtualCharts from '../container/VirtualCharts'
 import { NavLink, Link } from 'react-router-dom';
@@ -58,6 +59,9 @@ class ProviderPatients extends Component{
 
     dataDisplay =()=>{ 
         debugger  
+        if (this.props.signed_in[0].error){ return ( 
+            this.props.history.push('/SignIn')) 
+    }
         if (this.updateStateBasedonURL(this.props.location.pathname) === '/providers/1/NewPatient'){
             if (this.props.signed_in === 'LOADING'){ return <h1>{this.props.signed_in}</h1>} else {
              return(<div> 
@@ -78,13 +82,14 @@ class ProviderPatients extends Component{
           </Router>
             </div>)
         
-          }  
+             } 
+
           else if (this.props.providers === "UPLOADING") {
             return <h4>{this.props.providers}</h4>
         }
         else if (this.props.providers.length >= 1 ){
            return this.props.providers.map(pro => <div><Provider {...pro} /></div>)
-        }
+        } 
 
         if (this.props.signed_in && this.props.signed_in.length <= 1 && (this.props.signed_in[0] === 'LOADING')){ 
          debugger
