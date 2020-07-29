@@ -66,7 +66,7 @@ class NavBar extends Component{
                 <div>  
                                         <NavLink style={{ marginRight: '10px' }} to='/ProviderPatients'>Home</NavLink>
                                         <Route exact path='/ProviderPatients' render={(routerProps) => <ProviderPatients {...routerProps} />} />
-                <NavLink style={{marginRight: '10px'}} to='/Patients'>My Patients</NavLink>
+                
                 <Route exact path='/Patients' render={(routerProps) => <PatientsMaker {...routerProps} />} /> 
                                         
                 
@@ -86,7 +86,7 @@ class NavBar extends Component{
                 <div>
                                                 <NavLink style={{ marginRight: '10px' }} to='/ProviderPatients'>Home</NavLink>
                                                 <Route exact path='/ProviderPatients' render={(routerProps) => <ProviderPatients {...routerProps} />} />
-                <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/MyCharts`} >My Charts</NavLink>
+                
                 <Route exact path={`/providers/${this.props.signed_in[0].id}/MyCharts`} render={(routerProps) => <VirtualCharts provider_id={this.props.signed_in[0].id} {...routerProps} />} />
                                                 
                 </div>
