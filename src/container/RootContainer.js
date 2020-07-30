@@ -29,10 +29,10 @@ class RootContainer extends Component{
    
     }
     componentDidMount(){ 
-        debugger
+        
         if (this.props.signed_in[0]){  
             let id = this.props.signed_in[0].id
-                debugger
+                
         this.props.fetchMyPatients(id || 1)
         }
     }
@@ -45,7 +45,7 @@ class RootContainer extends Component{
     }
 }  
 const mstp =(state)=>{ 
-    debugger
+    
     return{myPatients: state.providers.patients, 
            signed_in: state.providers.signed_in }
 }

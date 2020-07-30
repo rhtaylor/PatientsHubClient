@@ -28,16 +28,16 @@ class Form extends Component{
     handleSubmit =(e)=>{ 
         e.preventDefault() 
         let addProvider = this.props  
-        debugger
+        
         addProvider.addProvider(this.state) 
-        debugger
+        
         this.props.history.push('/ProviderPatients')
         
         
     }
 
     render(){ 
-        debugger
+        
     return(
         <div className="signIn"> 
         <form className="signIn" onSubmit={(e)=>this.handleSubmit(e)}> 
@@ -72,7 +72,7 @@ const mdtp = (dispatch) => {
 
 }
 const mstp = (s) => { 
-    debugger
+    
     return {providers : s.providers, 
             
         }

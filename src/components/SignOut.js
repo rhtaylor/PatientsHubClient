@@ -5,11 +5,11 @@ import {signOut} from '../actions/actions'
 class SignOut extends Component{ 
 
     handleClick(){
-        debugger 
+         
         let id = this.props.providers["signed_in"][0].id;
-        debugger
+        
         this.props.signOut(id)  
-        debugger
+        
         this.props.history.push('/')
     }
 

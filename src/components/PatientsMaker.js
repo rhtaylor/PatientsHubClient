@@ -5,7 +5,7 @@ import Patient from './Patient'
 import {v1 as uuid} from 'uuid'
 class PatientsMaker extends Component{ 
     makeMyPatients=()=>{ 
-        debugger
+        
         if (this.props.patients.length === 0 && this.props.patients){ 
             this.props.fetchMyPatients(this.props.signed_in[0].id) 
         } else if (this.props.patients.length === 1 && (this.props.patients[0] === 'LOADING' || 'You have zero patients')){
@@ -18,14 +18,14 @@ class PatientsMaker extends Component{
     back = (e) => { 
         //depreciated for home NavLink
             e.preventDefault()
-        debugger
+        
     
         this.props.history.goBack()
     }
 
 
     render(){ 
-        debugger
+        
         return (<div>
             
                 {this.makeMyPatients()}

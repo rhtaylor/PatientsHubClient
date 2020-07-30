@@ -19,7 +19,7 @@ import {
          }
      }
     componentDidMount(){
-        debugger 
+         
         this.setState(preS =>{ 
             return Object.assign({}, preS, {provider_id: this.props.location.pathname.match(/[1-9]/)[0] }) 
         })
@@ -28,11 +28,11 @@ import {
     }  
     
     makePatients = () =>{  
-        debugger
+        
         if (this.props.patients === "LOADING") {
             return (<h1 key={uuid()}>{this.props.patients}</h1>)
         } else if (this.props.patients.length > 0 ) { return this.props.patients.map((p, i) =>{ 
-            debugger
+            
           return (<div key={uuid()} >  
               <Router>
               <Link style={{ marginRight: '10px' }} key={p.id + p.id} to={`${this.props.match.path}/${p.id}`} ><h1>{p.name}</h1></Link>
@@ -42,7 +42,7 @@ import {
                   </div>) })   }
   }
     render(){ 
-        debugger
+        
     return (
     <div>{this.makePatients()}</div>
             )
@@ -50,7 +50,7 @@ import {
 
 } 
 const mstp = (s) =>{ 
-    debugger
+    
     return {patients: s.providers.patients, 
             signed_in: s.providers.signed_in
     }

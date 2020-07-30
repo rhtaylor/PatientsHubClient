@@ -1,8 +1,8 @@
 export function fetchMyCharts(provider_id){
     return (dispatch) => {   
-        debugger
+        
         dispatch({type: 'GETTING_CHARTS', payload: 'LOADING'}); 
-        debugger
+        
         return fetch(`http://localhost:3000/api/v1/providers/${provider_id}/mycharts`) 
         .then(res => res.json()) 
         .then(data => dispatch({type: 'GOT_CHARTS', charts: data})) 
@@ -11,7 +11,7 @@ export function fetchMyCharts(provider_id){
 }
 }
 export function addMyPatient(provider_id, new_patient_info){
-    debugger 
+     
     return (dispatch) => {dispatch({type: 'ADD_NEW_PATIENT', payload: 'ADDING_PATIENT'}); 
         return fetch(`http://localhost:3000/api/v1/providers/${provider_id}/patients/create`, {
             method: "POST", headers: {
@@ -24,10 +24,10 @@ export function addMyPatient(provider_id, new_patient_info){
     } }
 
 export function addProvider(action){   
-    debugger
+    
     return (dispatch) => { 
-        dispatch({type: "ADDING_PROVIDER", provider: 'UPLOADING'});  
-         debugger
+        dispatch({type: "ADDING_PROVIDER", provider: 'LOADING'});  
+         
         return fetch('http://localhost:3000/api/v1/providers/create', {
             method: "POST", headers: {
                 'Accept': 'application/json',
@@ -95,9 +95,9 @@ export function getRecords(){
 } 
 
 export function signIn(payload){   
-    debugger
+    
     return (dispatch) =>{ 
-        debugger
+        
         dispatch({type: 'SIGN_IN', provider: "LOADING"}); 
          return fetch('http://localhost:3000/api/v1/providers/login', {
             method: "POST",  
@@ -116,8 +116,8 @@ export function signIn(payload){
 
 }
 
-export function fetchMyPatients(id){  
-    debugger
+export function fetchMyPatients(id = 0){  
+    
     return (dispatch) =>{ 
         dispatch({type: 'GET_PROVIDER_PATIENTS', patients: 'LOADING'}); 
         return fetch(`http://localhost:3000/api/v1/providers/${id}/my_patients`) 
@@ -127,9 +127,9 @@ export function fetchMyPatients(id){
 }  
 
 export function addNoteCard(provider_id, patient_id, payload){ 
-    debugger
+    
     return (dispatch) =>{ dispatch({type: 'ADDING_NOTE', charts: "LOADING"});  
-        debugger
+        
         return fetch(`http://localhost:3000/api/v1/providers/${provider_id}/${patient_id}/virtual_chart`, {
             method: "POST", headers: {
                 'Accept': 'application/json',
@@ -143,10 +143,10 @@ export function addNoteCard(provider_id, patient_id, payload){
 } 
 
 export function signOut(id){  
-    debugger
+    
     return (dispatch) => {  
         dispatch({type: 'SIGN_OUT', provider: 'LOGGING_OUT'}) ; 
-        debugger
+        
         return fetch('http://localhost:3000/api/v1/providers/signout', { 
         method: "POST", headers: {
             'Accept': 'application/json',

@@ -12,14 +12,14 @@ import {
 class VirtualCharts extends Component{
     
     componentDidMount =()=>{  
-        debugger
+        
           
         this.props.fetchMyCharts(this.props.provider_id); 
         this.props.fetchMyPatients(this.props.provider_id)
     }
     
     displayCharts =()=>{ 
-        debugger 
+         
        
 
          if (this.props.charts === 'LOADING'){ 
@@ -48,7 +48,7 @@ class VirtualCharts extends Component{
 }  
 
 const mstp =(state)=> { 
-    debugger
+    
     return{providers: state.providers.providers, 
            patients: state.providers.patients, 
            charts: state.charts.charts 

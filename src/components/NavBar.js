@@ -17,7 +17,7 @@ class NavBar extends Component{
 
     backUP=(e)=>{ 
         e.preventDefault() 
-        debugger
+        
         this.props.history.go(-2)
     } 
     backUP1=(e)=>{
@@ -26,7 +26,7 @@ class NavBar extends Component{
     }
    
     render(){ 
-        debugger
+        
         return( 
                 <div className="bar"> 
                    

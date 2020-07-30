@@ -15,7 +15,7 @@ class Provider extends Component{
     } 
 
     handleClick=()=>{  
-        debugger
+        
         this.props.fetchMyPatients(this.props.id)
 
     }

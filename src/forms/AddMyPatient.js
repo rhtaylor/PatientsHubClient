@@ -13,7 +13,7 @@ export default class AddMyPatient extends Component {
     // handleSubmit(e){
     //     e.preventDefault() 
     //     this.props.addMyPatient(this.props.provider_id, this.state) 
-    //     debugger
+    //     
     //     this.props.history.goBack()
     // }
 
@@ -21,7 +21,7 @@ export default class AddMyPatient extends Component {
         e.preventDefault()  
         let id = e.target.id
         let value = e.target.value
-        debugger  
+          
         this.setState(preS => {  
           return {...preS, [id] : value} 
          } )
@@ -29,7 +29,7 @@ export default class AddMyPatient extends Component {
     }
     
     render() { 
-        debugger
+        
         return (<div className="signIn"> 
                 <label>Add patient info: </label>
             <form className="signIn" onSubmit={(e) => this.handleSubmit(e)}>

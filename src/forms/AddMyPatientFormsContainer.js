@@ -9,7 +9,7 @@ class AddMyPatientFormsContainer extends Component{
        
     }
     patientBack =()=>{ 
-        debugger 
+         
     if (this.props.charts.charts === 'LOADING'){ return <h1>{this.props.charts.charts}</h1>}
         return (this.props.new_admit.length === 0)  ? <AddMyPatient provider_id={this.props.provider_id} handleSubmitFromAbove={this.handleSubmitFromAbove} /> 
             : <NoteCard2 updateStateBasedonURL={this.props.updateStateBasedonURL} provider_id={this.props.provider_id} patient_id={this.props.new_admit} handleSubmit2={this.handleSubmit2} />
@@ -28,9 +28,9 @@ class AddMyPatientFormsContainer extends Component{
         
     } 
     handleSubmit2=(pro_id, pat_id, payload, e)=>{
-        debugger 
+         
         e.preventDefault()   
-        debugger 
+         
         payload.date = Date()
         this.props.addNoteCard(pro_id, pat_id[0].id , payload) 
         
@@ -40,7 +40,7 @@ class AddMyPatientFormsContainer extends Component{
    
 
     render(){ 
-        debugger
+        
         return(
                 <div>
                 {this.patientBack()}    
@@ -53,7 +53,7 @@ class AddMyPatientFormsContainer extends Component{
 } 
 
 const mstp =(state)=>{  
-    debugger
+    
     return{patients: state.providers.patients,  
            new_admit: state.providers.new_admit,
            charts: state.charts

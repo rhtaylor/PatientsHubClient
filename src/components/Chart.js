@@ -10,7 +10,7 @@ export default class Chart extends Component{
 
 
     render(){ 
-        debugger
+        
         return(<div key={uuid()}>
                   <p>{this.props.date}</p>  
                   <p>{this.props.note}</p>

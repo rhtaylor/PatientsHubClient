@@ -18,14 +18,14 @@ import {
 
     } 
     componentDidMount(){ 
-        debugger
+        
        
     } 
 
    
 
     render(){ 
-        debugger 
+         
         
         return( 
                 
@@ -46,7 +46,7 @@ import {
 
 
     const mstp =(state)=>{ 
-        debugger
+        
         return{providers: state.providers, 
                signed_in: state.providers.signed_in
             }

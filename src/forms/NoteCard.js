@@ -23,19 +23,19 @@ export default class NoteCard extends Component{
     } 
     handleSubmit =(e)=>{
         e.preventDefault() 
-        debugger 
+         
         let provider_num = this.props.provider_id 
         let patient_num = this.props.patient_id.toString()  
         
-        debugger
+        
         this.props.addNoteCard(provider_num, patient_num, this.state) 
         this.setState({note: '', patient_id: '', provider_id: ''})  
-        debugger 
+         
         this.props.location.pathname === `/Patients/${provider_num}` ? this.props.history.go(-2) : this.props.history.go(-3)
     }
     
     render(){ 
-        debugger 
+         
         return (<div className="signIn"> 
             
             <form className="signIn" onSubmit={(e) => this.handleSubmit(e)}>

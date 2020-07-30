@@ -22,7 +22,7 @@ export default class SignIn extends Component{
 } 
 
     componentDidMount(){ 
-        debugger 
+         
         this.props[0].history.push('/SignIn')
        
     }
@@ -32,7 +32,7 @@ export default class SignIn extends Component{
         let saveE = e.target 
         let namey = saveE.name
         let value = saveE.value
-        debugger  
+          
         if ( namey === "email" ){ 
              let newE = value 
                 this.setState( preState => { 
@@ -52,16 +52,16 @@ export default class SignIn extends Component{
     }  
     
     handleSubmit =(event)=>{ 
-        debugger
+        
         event.preventDefault();
         this.props.signIn(this.state) 
         this.props[0].history.push('/ProviderPatients')
-        debugger
+        
         
         // maybe use router push to render diff componet after the fetch?
     } 
      render(){   
-         debugger
+         
         return (   <div className="signIn">
                     <form className="signIn" onSubmit={(e) => this.handleSubmit(e)}> 
                      

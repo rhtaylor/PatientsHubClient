@@ -14,11 +14,11 @@ import {
 } from 'react-router-dom';
 class HomeComponent extends Component{ 
     componentDidMount(){
-        debugger
+        
     }
     
     componentGate =()=>{
-        debugger
+        
     } 
 
     render(){

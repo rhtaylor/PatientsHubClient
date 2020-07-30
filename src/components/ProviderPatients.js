@@ -29,7 +29,7 @@ class ProviderPatients extends Component{
     } 
 
     componentDidUpdate(){
-        debugger  
+          
      this.state.currentURL !== 'ProviderPath' ? console.log("NOOOO") : console.log("Weird")
     
     }  
@@ -41,16 +41,16 @@ class ProviderPatients extends Component{
         this.updateStateBasedonURL(this.props.location.pathname)
         this.dataDisplay()
         if (this.props.myPatients.length === 0){    
-            debugger  
-            if(this.props.signed_in[0] !== 'LOADING'){ 
-                debugger
+              
+            if (this.props.signed_in[0] !== 'LOADING'){ 
+                
                 this.props.fetchMyPatients(this.props.signed_in[0].id)
                 
         } }
     }
 
     proxyFetch(id){   
-        debugger 
+         
     if (this.props.myPatients[0] === 'LOADING'){ 
          setTimeout(function(){ console.log('tick tick')}, 3000) } 
     else { this.props.fetchMyPatients(id) }
@@ -58,7 +58,7 @@ class ProviderPatients extends Component{
     }
 
     dataDisplay =()=>{ 
-        debugger  
+          
         if (this.props.signed_in[0].error){ return ( 
             this.props.history.push('/SignIn')) 
     }
@@ -92,7 +92,7 @@ class ProviderPatients extends Component{
         } 
 
         if (this.props.signed_in && this.props.signed_in.length <= 1 && (this.props.signed_in[0] === 'LOADING')){ 
-         debugger
+         
             return <h4>{this.props.signed_in}</h4> }  
             
         else if (this.props.myPatients.length > 0 && this.props.myPatients[0] === 'LOADING'){ 
@@ -178,14 +178,14 @@ class ProviderPatients extends Component{
          }                   
          }
         back=()=>{ 
-            debugger
+            
             this.props.history.goBack()
         }
     
     
     
     render(){ 
-        debugger
+        
         return(<div> 
           
             {this.dataDisplay()} 
@@ -195,7 +195,7 @@ class ProviderPatients extends Component{
 } 
  
 const mstp =(state)=>{ 
-    debugger
+    
     return{myPatients: state.providers.patients, 
            signed_in: state.providers.signed_in, 
            providers: state.providers.providers
@@ -203,7 +203,7 @@ const mstp =(state)=>{
 } 
 
 const mdtp =(dispatch)=>{ 
-    debugger
+    
     return { fetchMyPatients: (providerId) => dispatch(fetchMyPatients(providerId)), 
              addMyPatient: (provider_id, new_patient_info) => dispatch( addMyPatient(provider_id, new_patient_info) )
     }

@@ -15,7 +15,7 @@ class Patient extends Component{
         super(props)
     } 
     componentDidMount(){
-        debugger
+        
     }  
     
     proxyFetch =()=>{  
@@ -25,7 +25,7 @@ class Patient extends Component{
     } 
 
     render(){ 
-        debugger  
+          
        return(<div key={uuid()} className="vc">  
         { this.props.charts.charts === 'UPDATING' || this.props.patients === 'LOADING' ? <h1>Loading</h1> : null } 
         
@@ -50,7 +50,7 @@ class Patient extends Component{
 
  
 const mstp = (state)=>{  
-debugger
+
     return{charts: state.charts, 
            patients: state.providers.patients
     }
