@@ -15,7 +15,15 @@ import ProviderPatients from './ProviderPatients';
 class NavBar extends Component{ 
 
 
-
+    backUP=(e)=>{ 
+        e.preventDefault() 
+        debugger
+        this.props.history.go(-2)
+    } 
+    backUP1=(e)=>{
+        e.preventDefault() 
+        this.props.history.go(-1)
+    }
    
     render(){ 
         debugger
@@ -28,11 +36,14 @@ class NavBar extends Component{
                     <NavLink style={{ marginRight: '10px' }} to="/SignUp"  >SignUp</NavLink>  
                     
                     </div>
-                    : this.props.location.pathname === '/SignIn' ? 
-                        <NavLink style={{ marginRight: '10px' }} to="/SignIn"  >SignIn</NavLink> 
+                    : this.props.location.pathname === '/SignIn' ?  
+                        <div> 
+                            <span><button onClick={(e)=>this.backUP(e)}>Back </button></span>
+                        <NavLink style={{ marginRight: '10px' }} to="/SignIn"  >SignIn</NavLink>  
+                        </div>
                     : this.props.location.pathname === '/SignUp' ? 
                         <div>
-                                
+                                <span><button onClick={(e) => this.backUP1(e)}>Back </button></span>    
                             
                         </div>
                     : this.props.location.pathname === '/ProviderPatients' ? 
@@ -58,7 +69,7 @@ class NavBar extends Component{
                       <div>  
                                     <NavLink style={{ marginRight: '10px' }} to='/ProviderPatients'>Home</NavLink>
                                     <Route exact path='/ProviderPatients' render={(routerProps) => <ProviderPatients {...routerProps} />} />
-                            <NavLink style={{ marginRight: '10px' }} to={`providers/${this.props.signed_in[0].id}/NewPatient`} >Add a new patient's chart</NavLink>
+                            
                             <Route exact path={`/providers/${this.props.signed_in[0].id}/NewPatient`} render={(routerProps) => <AddMyPatientFormsContainer
                                 syncState={this.syncState} updateStateBasedonURL={this.updateStateBasedonURL} provider_id={this.props.signed_in[0].id} addMyPatient={this.props.addMyPatient} {...routerProps} />} />
                     </div> 
