@@ -6,10 +6,10 @@ import {v1 as uuid} from 'uuid'
 class PatientsMaker extends Component{ 
     makeMyPatients=()=>{ 
         debugger
-        if (this.props.patients.length === 0 ){ 
+        if (this.props.patients.length === 0 && this.props.patients){ 
             this.props.fetchMyPatients(this.props.signed_in[0].id) 
-        } else if (this.props.patients.length === 1 && this.props.patients[0] === 'LOADING'){
-            return <h1>{this.props.patients}</h1> 
+        } else if (this.props.patients.length === 1 && (this.props.patients[0] === 'LOADING' || 'You have zero patients')){
+            return <h1>{this.props.patients[0]}</h1> 
         } else {
           return  this.props.patients.map(p => <div key={uuid()} ><Patient back={this.back} provider_id={this.props.signed_in[0].id} patient_id={p.id} match={this.props.match} location={this.props.location} histroy={this.props.histroy} key={uuid()} {...p} /></div>)
         } 
