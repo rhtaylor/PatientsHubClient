@@ -1,4 +1,4 @@
-# PatientsHubClient front-end REACT SPA App.  
+# PatientsHubClient front-end react SPA App.  
 
 * react version 16.13.1  
 
